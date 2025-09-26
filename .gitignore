@@ -112,3 +112,8 @@ yarn-debug.log*
 # .rvmrc
 # .ruby-version  
 # .ruby-gemset
+
+# Prevent backup files from being committed
+*_backup.*
+*_clean.*
+*.bak
