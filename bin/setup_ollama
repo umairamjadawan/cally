@@ -1,0 +1,76 @@
+#!/usr/bin/env ruby
+
+puts "🤖 Cally - Ollama Setup"
+puts "=" * 40
+
+# Check if Ollama is installed
+def check_ollama_installed
+  system('which ollama > /dev/null 2>&1')
+end
+
+# Check if Ollama is running
+def check_ollama_running
+  system('curl -s http://localhost:11434/api/tags > /dev/null 2>&1')
+end
+
+# Pull the phi3:mini model
+def pull_phi3_model
+  puts "📥 Pulling phi3:mini model (this may take a few minutes)..."
+  system('ollama pull phi3:mini')
+end
+
+# Start Ollama service
+def start_ollama
+  puts "🚀 Starting Ollama service..."
+  system('ollama serve &')
+  sleep 3 # Give it time to start
+end
+
+# Main setup process
+begin
+  unless check_ollama_installed
+    puts "❌ Ollama is not installed!"
+    puts "Please install Ollama first:"
+    puts "   curl -fsSL https://ollama.ai/install.sh | sh"
+    puts "   OR visit: https://ollama.ai/download"
+    exit 1
+  end
+  
+  puts "✅ Ollama is installed"
+  
+  unless check_ollama_running
+    puts "🔄 Ollama is not running, starting it..."
+    start_ollama
+    
+    # Wait and check again
+    sleep 5
+    unless check_ollama_running
+      puts "❌ Failed to start Ollama"
+      puts "Please try running 'ollama serve' manually"
+      exit 1
+    end
+  end
+  
+  puts "✅ Ollama is running"
+  
+  # Check if phi3:mini model is available
+  models_output = `ollama list 2>/dev/null`
+  unless models_output.include?('phi3:mini')
+    pull_phi3_model
+  else
+    puts "✅ phi3:mini model is already available"
+  end
+  
+  puts ""
+  puts "🎉 Ollama setup complete!"
+  puts "🤖 Cally (phi3:mini) is ready for kid-friendly conversations"
+  puts ""
+  puts "Next steps:"
+  puts "1. Run: rails server"
+  puts "2. Open: http://localhost:3000"
+  puts "3. Start chatting!"
+  
+rescue => e
+  puts "❌ Error during setup: #{e.message}"
+  exit 1
+end

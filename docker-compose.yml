@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  kid-chatgpt:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./log:/app/log
+      - ollama_data:/root/.ollama
+    environment:
+      - RAILS_ENV=development
+    restart: unless-stopped
+
+volumes:
+  ollama_data:

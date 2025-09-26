@@ -1,0 +1,267 @@
+<div class="kid-chat-container">
+  
+  <div class="chat-container">
+    <div class="chat-messages" id="chatMessages">
+      <div class="message ai-message">
+        <span class="emoji">👋</span>
+        Hi there! I'm Cally, your friendly AI helper. You can ask me anything you want to know, and I'll try my best to help you! You can type your question or use the microphone to speak to me.
+      </div>
+    </div>
+    
+    <div class="status" id="status"></div>
+    
+    <div class="input-container">
+      <button class="btn btn-voice" id="micButton" title="Click to speak">
+        <span class="emoji">🎤</span>
+      </button>
+      
+      <input type="text" 
+             class="chat-input" 
+             id="chatInput" 
+             placeholder="Type your question here or click the microphone to speak..."
+             maxlength="500">
+      
+      <button class="btn btn-primary" id="sendButton">
+        <span class="emoji">📤</span> Send
+      </button>
+      
+      <button class="btn btn-speak" id="speakButton" title="Read last message aloud">
+        <span class="emoji">🔊</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<%= content_for :javascript do %>
+<script>
+class CallyChat {
+  constructor() {
+    // Get DOM elements with error checking
+    this.chatMessages = document.getElementById('chatMessages');
+    this.chatInput = document.getElementById('chatInput');
+    this.sendButton = document.getElementById('sendButton');
+    this.micButton = document.getElementById('micButton');
+    this.speakButton = document.getElementById('speakButton');
+    this.status = document.getElementById('status');
+    
+    // Check if we're actually on the chat page
+    if (!this.chatMessages || !this.chatInput || !this.sendButton) {
+      console.log('Chat elements not found - not on chat page');
+      return;
+    }
+    
+    this.recognition = null;
+    this.synthesis = window.speechSynthesis;
+    this.lastAiMessage = '';
+    
+    // Generate or retrieve session ID for conversation context
+    this.sessionId = this.getOrCreateSessionId();
+    
+    this.initializeEventListeners();
+    this.initializeSpeechRecognition();
+    
+    console.log('CallyChat initialized successfully');
+  }
+  
+  getOrCreateSessionId() {
+    // Create session ID based on current hour (like backend logic)
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hour = String(now.getHours()).padStart(2, '0');
+    return `${year}${month}${day}_${hour}`;
+  }
+  
+  initializeEventListeners() {
+    this.sendButton.addEventListener('click', () => this.sendMessage());
+    this.chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        this.sendMessage();
+      }
+    });
+    
+    this.micButton.addEventListener('click', () => this.toggleSpeechRecognition());
+    this.speakButton.addEventListener('click', () => this.speakLastMessage());
+  }
+  
+  initializeSpeechRecognition() {
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      this.recognition = new SpeechRecognition();
+      this.recognition.continuous = false;
+      this.recognition.interimResults = false;
+      this.recognition.lang = 'en-US';
+      
+      this.recognition.onstart = () => {
+        this.setStatus('🎤 Listening... speak now!', 'recording');
+        this.micButton.disabled = true;
+      };
+      
+      this.recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        this.chatInput.value = transcript;
+        this.setStatus('✅ Got it! Click send or press Enter.', 'thinking');
+      };
+      
+      this.recognition.onerror = (event) => {
+        this.setStatus('❌ Sorry, I couldn\'t hear you clearly. Try again!', '');
+        this.micButton.disabled = false;
+      };
+      
+      this.recognition.onend = () => {
+        this.micButton.disabled = false;
+        if (this.status.textContent.includes('Listening')) {
+          this.setStatus('', '');
+        }
+      };
+    } else {
+      this.micButton.style.display = 'none';
+      console.log('Speech recognition not supported');
+    }
+  }
+  
+  toggleSpeechRecognition() {
+    if (this.recognition) {
+      this.recognition.start();
+    }
+  }
+  
+  async sendMessage() {
+    const message = this.chatInput.value.trim();
+    if (!message) return;
+    
+    // Add user message to chat
+    this.addMessage(message, 'user');
+    this.chatInput.value = '';
+    
+    // Show thinking status
+    this.setStatus('🤔 Thinking...', 'thinking');
+    this.sendButton.disabled = true;
+    
+    try {
+      const response = await fetch('/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content
+        },
+        body: JSON.stringify({ message: message, session_id: this.sessionId })
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        this.addMessage(data.response, 'ai');
+        this.lastAiMessage = data.response;
+        this.setStatus('', '');
+        
+        // Don't auto-speak - only speak when user clicks speaker button
+      } else {
+        this.addMessage(data.error || 'Sorry, something went wrong!', 'ai');
+        this.setStatus('', '');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      this.addMessage('Sorry, I had trouble connecting. Please try again!', 'ai');
+      this.setStatus('', '');
+    }
+    
+    this.sendButton.disabled = false;
+  }
+  
+  addMessage(content, type) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${type}-message`;
+    
+    const emoji = type === 'user' ? '👦' : '🤖';
+    messageDiv.innerHTML = `<span class="emoji">${emoji}</span>${content}`;
+    
+    this.chatMessages.appendChild(messageDiv);
+    this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+  }
+  
+  speakLastMessage() {
+    if (this.lastAiMessage) {
+      this.speakMessage(this.lastAiMessage);
+    }
+  }
+  
+  speakMessage(text) {
+    if (this.synthesis) {
+      // Cancel any ongoing speech
+      this.synthesis.cancel();
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.8;
+      utterance.pitch = 1.2;
+      utterance.volume = 0.8;
+      
+      // Try to use a child-friendly voice
+      const voices = this.synthesis.getVoices();
+      const preferredVoice = voices.find(voice => 
+        voice.name.includes('Google') && voice.lang.includes('en') ||
+        voice.name.includes('Alex') ||
+        voice.name.includes('Samantha')
+      );
+      
+      if (preferredVoice) {
+        utterance.voice = preferredVoice;
+      }
+      
+      utterance.onstart = () => {
+        this.speakButton.disabled = true;
+        this.setStatus('🔊 Speaking...', 'thinking');
+      };
+      
+      utterance.onend = () => {
+        this.speakButton.disabled = false;
+        this.setStatus('', '');
+      };
+      
+      this.synthesis.speak(utterance);
+    }
+  }
+  
+  setStatus(message, className) {
+    if (this.status) {
+      this.status.textContent = message;
+      this.status.className = `status ${className}`;
+    }
+  }
+}
+
+// Initialize Cally when the page loads - handle both initial load and Turbo navigation
+function initializeCallyChat() {
+  // Only initialize if we're on the chat page and don't already have an instance
+  if (document.getElementById('chatMessages') && !window.callyChat) {
+    console.log('Initializing CallyChat...');
+    window.callyChat = new CallyChat();
+  }
+}
+
+// Clean up existing instance
+function cleanupCallyChat() {
+  if (window.callyChat) {
+    console.log('Cleaning up CallyChat...');
+    // Clean up speech recognition if active
+    if (window.callyChat.recognition) {
+      try {
+        window.callyChat.recognition.abort();
+      } catch (e) {
+        // Ignore errors during cleanup
+      }
+    }
+    window.callyChat = null;
+  }
+}
+
+// Handle both regular page loads and Turbo navigation
+document.addEventListener('DOMContentLoaded', initializeCallyChat);
+document.addEventListener('turbo:load', initializeCallyChat);
+
+// Clean up when leaving the page
+document.addEventListener('turbo:before-visit', cleanupCallyChat);
+document.addEventListener('turbo:before-cache', cleanupCallyChat);
+</script>
+<% end %>

@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+puts "🗄️ Cally - Database Setup"
+puts "=" * 40
+
+# Setup database for chat history storage
+begin
+  puts "📊 Creating SQLite database..."
+  system('rails db:create')
+  
+  puts "🔄 Running database migrations..."
+  system('rails db:migrate')
+  
+  puts "🌱 Seeding database..."
+  system('rails db:seed')
+  
+  puts ""
+  puts "✅ Database setup complete!"
+  puts "📈 SQLite database is ready for fast chat history storage"
+  puts ""
+  puts "Benefits of SQLite over JSON:"
+  puts "  • ⚡ Much faster queries and operations"
+  puts "  • 🔍 Easy searching and filtering"
+  puts "  • 📊 Better data integrity and validation"
+  puts "  • 🚀 Scalable for thousands of conversations"
+  puts ""
+  
+rescue => e
+  puts "❌ Database setup failed: #{e.message}"
+  puts ""
+  puts "Fallback: The app will use JSON file logging if database is unavailable"
+  exit 1
+end

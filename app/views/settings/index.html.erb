@@ -1,0 +1,203 @@
+<div class="page-container">
+  
+  <div class="content-container">
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    
+    <% if flash[:error] %>
+      <div class="alert alert-error">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+    
+    <%= form_with url: settings_path, method: :patch, local: true, class: "settings-form" do |form| %>
+      
+      <!-- Family Information Section -->
+      <div class="settings-section">
+        <div class="section-header">
+          <h2><span class="emoji">👨‍👩‍👧‍👦</span> Family Information</h2>
+          <p>Help Cally know your family better</p>
+        </div>
+        
+        <div class="form-grid">
+          <% @family_configs.each do |config| %>
+            <div class="form-field">
+              <label for="<%= config.key %>" class="form-label">
+                <%= config.description %>
+              </label>
+              <%= text_field_tag "prompt_configs[#{config.key}]", config.value, 
+                    id: config.key, 
+                    class: "form-input",
+                    placeholder: placeholder_for(config.key) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      
+      <!-- Behavioral Settings Section -->
+      <div class="settings-section">
+        <div class="section-header">
+          <h2><span class="emoji">🎭</span> Cally's Personality</h2>
+          <p>Customize how Cally responds and behaves</p>
+        </div>
+        
+        <div class="form-grid">
+          <% @behavioral_configs.each do |config| %>
+            <div class="form-field">
+              <label for="<%= config.key %>" class="form-label">
+                <%= config.description %>
+              </label>
+              <% if config.key == 'response_style' %>
+                <%= select_tag "prompt_configs[#{config.key}]", 
+                      options_for_select([
+                        ['Friendly and encouraging', 'friendly and encouraging'],
+                        ['Enthusiastic and energetic', 'enthusiastic and energetic'],
+                        ['Calm and gentle', 'calm and gentle'],
+                        ['Playful and fun', 'playful and fun']
+                      ], config.value),
+                      { id: config.key, class: "form-select" } %>
+              <% elsif config.key == 'encouragement_level' %>
+                <%= select_tag "prompt_configs[#{config.key}]", 
+                      options_for_select([
+                        ['High - Very encouraging', 'high'],
+                        ['Medium - Balanced encouragement', 'medium'],
+                        ['Low - Minimal encouragement', 'low']
+                      ], config.value),
+                      { id: config.key, class: "form-select" } %>
+              <% elsif config.key == 'explanation_detail' %>
+                <%= select_tag "prompt_configs[#{config.key}]", 
+                      options_for_select([
+                        ['Very Simple - For younger kids', 'very simple'],
+                        ['Simple - Easy to understand', 'simple'],
+                        ['Detailed - More thorough explanations', 'detailed']
+                      ], config.value),
+                      { id: config.key, class: "form-select" } %>
+              <% else %>
+                <%= text_field_tag "prompt_configs[#{config.key}]", config.value, 
+                      id: config.key, 
+                      class: "form-input",
+                      placeholder: placeholder_for(config.key) %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      
+      <!-- Safety Settings Section -->
+      <div class="settings-section">
+        <div class="section-header">
+          <h2><span class="emoji">🛡️</span> Safety Rules</h2>
+          <p>Add custom safety rules for your family</p>
+        </div>
+        
+        <div class="form-grid">
+          <% @safety_configs.each do |config| %>
+            <div class="form-field">
+              <label for="<%= config.key %>" class="form-label">
+                <%= config.description %>
+              </label>
+              <%= text_area_tag "prompt_configs[#{config.key}]", config.value, 
+                    id: config.key, 
+                    class: "form-textarea",
+                    rows: 3,
+                    placeholder: "Enter a custom safety rule..." %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      
+      <!-- Personalization Section -->
+      <div class="settings-section">
+        <div class="section-header">
+          <h2><span class="emoji">🎨</span> Personalization</h2>
+          <p>Make Cally uniquely yours</p>
+        </div>
+        
+        <div class="form-grid">
+          <% @personalization_configs.each do |config| %>
+            <div class="form-field">
+              <label for="<%= config.key %>" class="form-label">
+                <%= config.description %>
+              </label>
+              <%= text_field_tag "prompt_configs[#{config.key}]", config.value, 
+                    id: config.key, 
+                    class: "form-input",
+                    placeholder: placeholder_for(config.key) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      
+      <!-- Action Buttons -->
+      <div class="form-actions">
+        <%= submit_tag "💾 Save Cally's Settings", class: "btn btn-primary btn-large" %>
+        <%= link_to "🔄 Reset to Defaults", reset_settings_path, 
+              method: :post, 
+              class: "btn btn-secondary",
+              confirm: "Are you sure? This will reset all of Cally's custom settings." %>
+        <button type="button" class="btn btn-info" onclick="testCurrentPrompt()">
+          <span class="emoji">🧪</span> Test Current Prompt
+        </button>
+      </div>
+    <% end %>
+    
+    <!-- Test Prompt Results -->
+    <div id="promptTestResults" class="prompt-test-results" style="display: none;">
+      <h3>🧪 Current Prompt Preview</h3>
+      <div class="prompt-preview" id="promptPreview"></div>
+      <div class="prompt-stats" id="promptStats"></div>
+    </div>
+  </div>
+</div>
+
+<%= content_for :javascript do %>
+<script>
+async function testCurrentPrompt() {
+  const resultsDiv = document.getElementById('promptTestResults');
+  const previewDiv = document.getElementById('promptPreview');
+  const statsDiv = document.getElementById('promptStats');
+  
+  try {
+    const response = await fetch('/settings/test_prompt');
+    const data = await response.json();
+    
+    if (response.ok) {
+      previewDiv.innerHTML = `<pre>${data.prompt}</pre>`;
+      statsDiv.innerHTML = `
+        <div class="stats-row">
+          <span>Length: ${data.length} characters</span>
+          <span>Words: ${data.word_count}</span>
+        </div>
+      `;
+      resultsDiv.style.display = 'block';
+      resultsDiv.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      alert('Error testing prompt: ' + data.error);
+    }
+  } catch (error) {
+    alert('Error testing prompt: ' + error.message);
+  }
+}
+
+// Auto-save draft as user types (optional feature)
+let saveTimeout;
+function autoSaveDraft() {
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(() => {
+    localStorage.setItem('callySettingsDraft', new FormData(document.querySelector('.settings-form')));
+  }, 2000);
+}
+
+// Add event listeners to form inputs for auto-save
+document.addEventListener('DOMContentLoaded', () => {
+  const formInputs = document.querySelectorAll('.form-input, .form-select, .form-textarea');
+  formInputs.forEach(input => {
+    input.addEventListener('input', autoSaveDraft);
+  });
+});
+</script>
+<% end %>
+

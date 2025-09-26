@@ -1,0 +1,113 @@
+<div class="page-container">
+  <div class="content-container">
+    <div class="history-controls">
+      <button class="btn btn-secondary" onclick="location.reload()">
+        <span class="emoji">🔄</span> Refresh
+      </button>
+      <button class="btn btn-danger" onclick="confirmClearHistory()">
+        <span class="emoji">🗑️</span> Clear All
+      </button>
+      <div class="history-info">
+        <span class="emoji">💡</span>
+        <span><%= @total_count %></span> conversations found
+      </div>
+    </div>
+
+    <div class="history-container">
+      <% if @error_message %>
+        <div class="error-state">
+          <span class="emoji">❌</span>
+          <h3>Database Setup Needed</h3>
+          <p><%= @error_message %></p>
+          <div style="margin-top: 20px;">
+            <p><strong>Run in your terminal:</strong></p>
+            <div style="background: #f1f5f9; padding: 16px; border-radius: 8px; margin: 16px 0; font-family: monospace; font-size: 0.875rem;">
+              rvm use ruby-3.4.1@cally<br>
+              rails db:create<br>
+              rails db:migrate<br>
+              rails db:seed
+            </div>
+          </div>
+        </div>
+      <% elsif @conversations.empty? %>
+        <div class="empty-state">
+          <span class="emoji">📭</span>
+          <p>No conversations yet!</p>
+          <p>Start chatting with Cally to see your conversation history here.</p>
+          <%= link_to "Start Chatting", root_path, class: "btn btn-primary" %>
+        </div>
+      <% else %>
+        <% @conversations.each_with_index do |conversation, index| %>
+          <div class="history-card">
+            <div class="history-header" onclick="toggleConversation(<%= index %>)">
+              <div class="history-info-line">
+                <span class="emoji">💬</span>
+                <span class="history-time"><%= conversation.time_ago %></span>
+                <span class="history-session">Session: <%= conversation.session_id %></span>
+              </div>
+              <span class="expand-icon" id="icon-<%= index %>">▼</span>
+            </div>
+            
+            <div class="history-content" id="content-<%= index %>" style="display: none;">
+              <div class="history-messages">
+                <div class="history-user-msg">
+                  <strong>👤 Child:</strong>
+                  <p><%= simple_format(h(conversation.user_message)) %></p>
+                </div>
+                <div class="history-ai-msg">
+                  <strong>🤖 Cally:</strong>
+                  <p><%= simple_format(h(conversation.ai_response)) %></p>
+                </div>
+              </div>
+              <div style="padding-top: 20px; text-align: center; border-top: 1px solid #e2e8f0; margin-top: 20px; background: #f8fafc;">
+                <small style="color: #64748b; font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                  <span class="emoji">🕒</span>
+                  <%= conversation.formatted_timestamp %>
+                </small>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= content_for :javascript do %>
+<script>
+function toggleConversation(index) {
+  const content = document.getElementById(`content-${index}`);
+  const icon = document.getElementById(`icon-${index}`);
+  
+  if (content.style.display === 'none') {
+    content.style.display = 'block';
+    icon.textContent = '▲';
+  } else {
+    content.style.display = 'none';
+    icon.textContent = '▼';
+  }
+}
+
+async function confirmClearHistory() {
+  if (confirm('Are you sure you want to clear all chat history? This cannot be undone.')) {
+    try {
+      const response = await fetch('/chat/clear', {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content
+        }
+      });
+      
+      if (response.ok) {
+        alert('Chat history cleared successfully!');
+        location.reload();
+      } else {
+        alert('Failed to clear history');
+      }
+    } catch (error) {
+      alert('Error clearing history');
+    }
+  }
+}
+</script>
+<% end %>
