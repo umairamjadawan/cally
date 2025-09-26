@@ -3,7 +3,7 @@ require 'json'
 
 class OllamaService
   OLLAMA_URL = 'http://localhost:11434'
-  MODEL_NAME = 'phi3:mini'
+  MODEL_NAME = 'qwen2.5:0.5b'
   
   # Base system prompt - will be enhanced with family configuration
   def self.build_system_prompt
