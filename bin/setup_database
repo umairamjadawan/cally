@@ -3,6 +3,17 @@
 puts "🗄️ Cally - Database Setup"
 puts "=" * 40
 
+# Check RVM environment
+if ENV['GEM_HOME'] && ENV['GEM_HOME'].include?('ruby-3.4.1@cally')
+  puts "✅ Using correct RVM environment: #{ENV['GEM_HOME'].split('/').last}"
+else
+  puts "⚠️  Warning: May not be using correct RVM gemset"
+  puts "   Expected: ruby-3.4.1@cally"
+  puts "   Current: #{ENV['GEM_HOME']&.split('/')&.last || 'unknown'}"
+  puts "   Please run: rvm use ruby-3.4.1@cally"
+  puts ""
+end
+
 # Setup database for chat history storage
 begin
   puts "📊 Creating SQLite database..."

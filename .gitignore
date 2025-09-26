@@ -108,7 +108,7 @@ yarn-debug.log*
 # Mac files
 .DS_Store
 
-# RVM gemset files
-.rvmrc
-.ruby-version
-.ruby-gemset
+# RVM gemset files (keeping .rvmrc in repo for auto-setup)
+# .rvmrc
+# .ruby-version  
+# .ruby-gemset

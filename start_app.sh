@@ -9,6 +9,21 @@ if [ ! -f "Gemfile" ]; then
     exit 1
 fi
 
+# Setup RVM environment
+echo "🔧 Setting up RVM environment..."
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+    source "$HOME/.rvm/scripts/rvm"
+    rvm use ruby-3.4.1@cally --create
+    if [ $? -ne 0 ]; then
+        echo "❌ Failed to set up RVM environment"
+        echo "Please run manually: rvm use ruby-3.4.1@cally --create"
+        exit 1
+    fi
+    echo "✅ Using Ruby $(ruby --version) with gemset 'cally'"
+else
+    echo "⚠️  RVM not found. Make sure you're using the correct Ruby version (3.4.1)"
+fi
+
 # Check if Ruby is available
 if ! command -v ruby &> /dev/null; then
     echo "❌ Ruby is not installed or not in PATH"

@@ -3648,3 +3648,424 @@ Processing by ChatController#history as HTML
 Completed 200 OK in 18ms (Views: 13.0ms | ActiveRecord: 3.4ms | Allocations: 4798)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mPromptConfig Load (0.2ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "dad_name"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "dad_name"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "mom_name"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "mom_name"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "child_name"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "child_name"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "child_age"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "child_age"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "other_family"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "other_family"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "child_interests"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "child_interests"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "family_rules"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "family_rules"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "special_instructions"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "special_instructions"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "response_style"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "encouragement_level"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "explanation_detail"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "additional_safety_rule_1"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "additional_safety_rule_1"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "additional_safety_rule_2"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "additional_safety_rule_2"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "greeting_style"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "favorite_emoji"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "prompt_configs"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mConversation Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "conversations"[0m
+  [1m[36mPromptConfig Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "prompt_configs"[0m
+Started GET "/" for ::1 at 2025-09-26 21:22:46 +0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 820)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 657)
+  Rendered layout layouts/application.html.erb (Duration: 18.0ms | Allocations: 41520)
+Completed 200 OK in 22ms (Views: 19.2ms | ActiveRecord: 0.0ms | Allocations: 45678)
+
+
+Started GET "/chat/history" for ::1 at 2025-09-26 21:22:48 +0400
+Processing by ChatController#history as HTML
+  [1m[36mConversation Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "conversations"[0m
+  ↳ app/controllers/chat_controller.rb:52:in 'ChatController#history'
+  Rendering layout layouts/application.html.erb
+  Rendering chat/history.html.erb within layouts/application
+  [1m[36mConversation Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/chat/history.html.erb:32:in '_app_views_chat_history_html_erb__594935371589812700_9232'
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/chat/history.html.erb:40:in 'Enumerable#each_with_index'
+  Rendered chat/history.html.erb within layouts/application (Duration: 6.5ms | Allocations: 9311)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 10815)
+Completed 200 OK in 18ms (Views: 7.8ms | ActiveRecord: 1.4ms | Allocations: 18711)
+
+
+Started GET "/settings" for ::1 at 2025-09-26 21:22:59 +0400
+Processing by SettingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering settings/index.html.erb within layouts/application
+  [1m[36mPromptConfig Load (0.2ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "family_info"]]
+  ↳ app/views/settings/index.html.erb:26:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  [1m[36mPromptConfig Load (0.1ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "behavioral"]]
+  ↳ app/views/settings/index.html.erb:48:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "safety"]]
+  ↳ app/views/settings/index.html.erb:97:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "personalization"]]
+  ↳ app/views/settings/index.html.erb:120:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  Rendered settings/index.html.erb within layouts/application (Duration: 7.7ms | Allocations: 8667)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 135)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 9857)
+Completed 200 OK in 14ms (Views: 9.0ms | ActiveRecord: 0.6ms | Allocations: 12164)
+
+
+Started GET "/settings/test_prompt" for ::1 at 2025-09-26 21:23:15 +0400
+Processing by SettingsController#test_prompt as */*
+  [1m[36mPromptConfig Pluck (0.2ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "family_info"]]
+  ↳ app/models/prompt_config.rb:33:in 'PromptConfig.family_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "behavioral"]]
+  ↳ app/models/prompt_config.rb:77:in 'PromptConfig.behavioral_context'
+  [1m[36mPromptConfig Pluck (0.1ms)[0m  [1m[34mSELECT "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "safety"]]
+  ↳ app/models/prompt_config.rb:119:in 'PromptConfig.build_system_prompt'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1527)
+
+
+Started PATCH "/settings" for ::1 at 2025-09-26 21:23:38 +0400
+Processing by SettingsController#update as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "prompt_configs" => {"encouragement_level" => "low", "explanation_detail" => "detailed", "response_style" => "friendly and encouraging", "favorite_emoji" => "🤖", "greeting_style" => "Hello"}, "commit" => "💾 Save Cally's Settings"}
+  [1m[36mPromptConfig Load (0.2ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "encouragement_level"], ["LIMIT", 1]]
+  ↳ app/controllers/settings_controller.rb:15:in 'block in SettingsController#update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mPromptConfig Update (0.1ms)[0m  [1m[33mUPDATE "prompt_configs" SET "value" = ?, "updated_at" = ? WHERE "prompt_configs"."id" = ?[0m  [["value", "low"], ["updated_at", "2025-09-26 17:23:38.384592"], ["id", 2]]
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "explanation_detail"], ["LIMIT", 1]]
+  ↳ app/controllers/settings_controller.rb:15:in 'block in SettingsController#update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mPromptConfig Update (0.4ms)[0m  [1m[33mUPDATE "prompt_configs" SET "value" = ?, "updated_at" = ? WHERE "prompt_configs"."id" = ?[0m  [["value", "detailed"], ["updated_at", "2025-09-26 17:23:38.386731"], ["id", 3]]
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "response_style"], ["LIMIT", 1]]
+  ↳ app/controllers/settings_controller.rb:15:in 'block in SettingsController#update'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "favorite_emoji"], ["LIMIT", 1]]
+  ↳ app/controllers/settings_controller.rb:15:in 'block in SettingsController#update'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "greeting_style"], ["LIMIT", 1]]
+  ↳ app/controllers/settings_controller.rb:15:in 'block in SettingsController#update'
+Redirected to http://localhost:3001/settings
+Completed 302 Found in 8ms (ActiveRecord: 1.8ms | Allocations: 8194)
+
+
+Started GET "/settings" for ::1 at 2025-09-26 21:23:38 +0400
+Processing by SettingsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering settings/index.html.erb within layouts/application
+  [1m[36mPromptConfig Load (0.1ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "family_info"]]
+  ↳ app/views/settings/index.html.erb:26:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "behavioral"]]
+  ↳ app/views/settings/index.html.erb:48:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "safety"]]
+  ↳ app/views/settings/index.html.erb:97:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "personalization"]]
+  ↳ app/views/settings/index.html.erb:120:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  Rendered settings/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 2641)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 135)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 3862)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms | Allocations: 4290)
+
+
+Started GET "/settings/test_prompt" for ::1 at 2025-09-26 21:23:40 +0400
+Processing by SettingsController#test_prompt as */*
+  [1m[36mPromptConfig Pluck (0.1ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "family_info"]]
+  ↳ app/models/prompt_config.rb:33:in 'PromptConfig.family_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "behavioral"]]
+  ↳ app/models/prompt_config.rb:77:in 'PromptConfig.behavioral_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "safety"]]
+  ↳ app/models/prompt_config.rb:119:in 'PromptConfig.build_system_prompt'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1441)
+
+
+Started PATCH "/settings" for ::1 at 2025-09-26 21:23:58 +0400
+Processing by SettingsController#update as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "prompt_configs" => {"encouragement_level" => "medium", "explanation_detail" => "simple", "response_style" => "calm and gentle", "favorite_emoji" => "🤖", "greeting_style" => "Hello"}, "commit" => "💾 Save Cally's Settings"}
+  [1m[36mPromptConfig Load (0.1ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "encouragement_level"], ["LIMIT", 1]]
+  ↳ app/controllers/settings_controller.rb:15:in 'block in SettingsController#update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mPromptConfig Update (0.8ms)[0m  [1m[33mUPDATE "prompt_configs" SET "value" = ?, "updated_at" = ? WHERE "prompt_configs"."id" = ?[0m  [["value", "medium"], ["updated_at", "2025-09-26 17:23:58.160577"], ["id", 2]]
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mPromptConfig Load (0.1ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "explanation_detail"], ["LIMIT", 1]]
+  ↳ app/controllers/settings_controller.rb:15:in 'block in SettingsController#update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mPromptConfig Update (0.5ms)[0m  [1m[33mUPDATE "prompt_configs" SET "value" = ?, "updated_at" = ? WHERE "prompt_configs"."id" = ?[0m  [["value", "simple"], ["updated_at", "2025-09-26 17:23:58.163013"], ["id", 3]]
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "response_style"], ["LIMIT", 1]]
+  ↳ app/controllers/settings_controller.rb:15:in 'block in SettingsController#update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mPromptConfig Update (0.5ms)[0m  [1m[33mUPDATE "prompt_configs" SET "value" = ?, "updated_at" = ? WHERE "prompt_configs"."id" = ?[0m  [["value", "calm and gentle"], ["updated_at", "2025-09-26 17:23:58.164727"], ["id", 1]]
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/settings_controller.rb:17:in 'block in SettingsController#update'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "favorite_emoji"], ["LIMIT", 1]]
+  ↳ app/controllers/settings_controller.rb:15:in 'block in SettingsController#update'
+  [1m[36mPromptConfig Load (0.1ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "greeting_style"], ["LIMIT", 1]]
+  ↳ app/controllers/settings_controller.rb:15:in 'block in SettingsController#update'
+Redirected to http://localhost:3001/settings
+Completed 302 Found in 9ms (ActiveRecord: 2.2ms | Allocations: 7818)
+
+
+Started GET "/settings" for ::1 at 2025-09-26 21:23:58 +0400
+Processing by SettingsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering settings/index.html.erb within layouts/application
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "family_info"]]
+  ↳ app/views/settings/index.html.erb:26:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "behavioral"]]
+  ↳ app/views/settings/index.html.erb:48:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "safety"]]
+  ↳ app/views/settings/index.html.erb:97:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "personalization"]]
+  ↳ app/views/settings/index.html.erb:120:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  Rendered settings/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 2640)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 135)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 3826)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms | Allocations: 4216)
+
+
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "family_info"]]
+  ↳ app/models/prompt_config.rb:33:in 'PromptConfig.family_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "behavioral"]]
+  ↳ app/models/prompt_config.rb:77:in 'PromptConfig.behavioral_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "safety"]]
+  ↳ app/models/prompt_config.rb:119:in 'PromptConfig.build_system_prompt'
+Started GET "/" for ::1 at 2025-09-26 21:25:42 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1504)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms | Allocations: 1700)
+
+
+Started GET "/chat/history" for ::1 at 2025-09-26 21:25:45 +0400
+Processing by ChatController#history as HTML
+  [1m[36mConversation Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "conversations"[0m
+  ↳ app/controllers/chat_controller.rb:52:in 'ChatController#history'
+  Rendering layout layouts/application.html.erb
+  Rendering chat/history.html.erb within layouts/application
+  [1m[36mConversation Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/chat/history.html.erb:32:in '_app_views_chat_history_html_erb__594935371589812700_9232'
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/chat/history.html.erb:40:in 'Enumerable#each_with_index'
+  Rendered chat/history.html.erb within layouts/application (Duration: 1.6ms | Allocations: 2339)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 3845)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.2ms | Allocations: 4487)
+
+
+Started GET "/" for ::1 at 2025-09-26 21:25:46 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1507)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms | Allocations: 1703)
+
+
+Started GET "/" for ::1 at 2025-09-26 21:25:48 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 1513)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 1709)
+
+
+Started GET "/" for ::1 at 2025-09-26 21:25:49 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 1501)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 1697)
+
+
+Started GET "/" for ::1 at 2025-09-26 21:25:50 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1492)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms | Allocations: 1688)
+
+
+Started GET "/" for ::1 at 2025-09-26 21:25:50 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1516)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 1712)
+
+
+Started GET "/" for ::1 at 2025-09-26 21:25:50 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | Allocations: 1525)
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 1721)
+
+
+Started GET "/" for ::1 at 2025-09-26 21:25:51 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 1501)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms | Allocations: 1697)
+
+
+Started GET "/settings" for ::1 at 2025-09-26 21:25:52 +0400
+Processing by SettingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering settings/index.html.erb within layouts/application
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "family_info"]]
+  ↳ app/views/settings/index.html.erb:26:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "behavioral"]]
+  ↳ app/views/settings/index.html.erb:48:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "safety"]]
+  ↳ app/views/settings/index.html.erb:97:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "personalization"]]
+  ↳ app/views/settings/index.html.erb:120:in 'block in _app_views_settings_index_html_erb__2890796481387092399_9304'
+  Rendered settings/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2629)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 135)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 3815)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms | Allocations: 4201)
+
+
+Started GET "/chat/history" for ::1 at 2025-09-26 21:25:52 +0400
+Processing by ChatController#history as HTML
+  [1m[36mConversation Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "conversations"[0m
+  ↳ app/controllers/chat_controller.rb:52:in 'ChatController#history'
+  Rendering layout layouts/application.html.erb
+  Rendering chat/history.html.erb within layouts/application
+  [1m[36mConversation Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/chat/history.html.erb:32:in '_app_views_chat_history_html_erb__594935371589812700_9232'
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/chat/history.html.erb:40:in 'Enumerable#each_with_index'
+  Rendered chat/history.html.erb within layouts/application (Duration: 2.1ms | Allocations: 2335)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 3817)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 4458)
+
+
+Started GET "/" for ::1 at 2025-09-26 21:25:53 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.3ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1510)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 1706)
+
+
+Started GET "/" for ::1 at 2025-09-26 21:25:54 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 1534)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 1730)
+
+
