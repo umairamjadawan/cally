@@ -27,15 +27,7 @@
         </button>
       </div>
     </div>
-    
-    <!-- Active Character Indicator -->
-    <div class="active-character" id="activeCharacter" style="display: none;">
-      <span class="emoji" id="activeCharacterEmoji">🤖</span>
-      <span id="activeCharacterName">Regular Cally</span>
-      <button class="test-voice-btn" id="testVoiceBtn" title="Test this character's voice">
-        🔊 Test Voice
-      </button>
-    </div>
+
     
     <div class="status" id="status"></div>
     
@@ -311,10 +303,11 @@ class CallyChat {
     // Update voice settings immediately
     this.currentVoiceSettings = this.selectedCharacter.voiceSettings;
     
-    // Enable speaker button
+    // Enable speaker button immediately when character is selected
     const speakerBtn = document.getElementById('characterSpeakerBtn');
     if (speakerBtn) {
       speakerBtn.disabled = false;
+      speakerBtn.title = `Test ${this.selectedCharacter.name}'s voice`;
     }
     
     // Update active character indicator
@@ -328,9 +321,20 @@ class CallyChat {
       activeCharacter.style.display = 'block';
     }
     
-    // Show character selection confirmation
+    // Show character selection confirmation with visual feedback
     this.setStatus(`${this.selectedCharacter.emoji} Now talking to ${this.selectedCharacter.name}!`, 'character-selected');
     setTimeout(() => this.setStatus('', ''), 2000);
+    
+    // Add visual feedback to dropdown - highlight the selected option
+    const dropdown = document.getElementById('characterSelect');
+    if (dropdown) {
+      dropdown.style.borderColor = '#4CAF50'; // Green border to show selection
+      dropdown.style.backgroundColor = '#f0f8f0'; // Light green background
+      setTimeout(() => {
+        dropdown.style.borderColor = '';
+        dropdown.style.backgroundColor = '';
+      }, 3000); // Reset after 3 seconds
+    }
   }
   
   getCharacterTestMessage(characterName) {

@@ -5674,3 +5674,74 @@ Processing by ChatController#index as HTML
 Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 2428)
 
 
+Started GET "/" for ::1 at 2025-09-27 10:45:04 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.2ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_49688'
+  Rendered chat/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 5135)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 557)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 25985)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 1.1ms | Allocations: 28342)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:45:05 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_49688'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 2182)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.1ms | Allocations: 2452)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-27 10:45:22 +0400
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-09-27 10:46:03 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_55752'
+  Rendered chat/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 5162)
+  Rendered shared/_navigation.html.erb (Duration: 0.3ms | Allocations: 559)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 26157)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 1.0ms | Allocations: 28512)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:46:04 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.0ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_55752'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 2179)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms | Allocations: 2448)
+
+
+Started POST "/chat" for ::1 at 2025-09-27 10:46:27 +0400
+Processing by ChatController#send_message as */*
+  Parameters: {"message" => "tell me some bedtime story but it should not be more than 10 sentences", "session_id" => "20250927_10", "character_id" => "2", "chat" => {"message" => "tell me some bedtime story but it should not be more than 10 sentences", "session_id" => "20250927_10", "character_id" => "2"}}
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."session_id" = ? ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["session_id", "20250927_10"], ["LIMIT", 10]]
+  ↳ app/controllers/chat_controller.rb:23:in 'Enumerable#map'
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? AND "characters"."id" = ? LIMIT ?[0m  [["active", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/services/ollama_service.rb:53:in 'OllamaService#chat'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mConversation Create (0.4ms)[0m  [1m[32mINSERT INTO "conversations" ("user_message", "ai_response", "session_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_message", "tell me some bedtime story but it should not be more than 10 sentences"], ["ai_response", "Hello there! I'm Cally here to spin you a gentle bedtime story for a cozy lullaby of peacefulness. Let’s weave words into a soft tapestry:\n\nOnce upon a night, under the starlit sky, a little girl named **Molly** found herself in a warm bed wrapped in soft blankets—like an infant on its mother's lap! She had been up late, playing by herself and dreaming dreams of far-off lands.\n\nWhen she finally fell asleep, Molly was so content. A gentle breeze whispered through the pillows, like tiny hands caressing her sleep. Her heart felt safe inside—she knew it wasn't just a dream but reality!\n\nAs the night wore on, more stories were told in this little world – tales of old friends who had left behind a place far away where time moved so slow and gentle.\n\nIn the morning, when the sun came up, Molly woke up to find her bed warmer, her blankets snug, and her dreams filled with beautiful memories. She laughed happily, for in that dream, she was safe, happy, and connected to everything around her.\n\nAnd so, each night, as the world moved on, Molly felt a peaceful calm inside. No matter what came next – big or small—she knew she could rely on this bed where all her dreams were made possible.\n\nSo let's close this bedtime story with that warm embrace of a bed and a soft blanket – a moment filled with love, peace, and the light of hope.\n\nNow let's hear your stories in our lovely world! 😊✨"], ["session_id", "20250927_10"], ["timestamp", "2025-09-27 06:46:31.820077"], ["created_at", "2025-09-27 06:46:31.820315"], ["updated_at", "2025-09-27 06:46:31.820315"]]
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+Conversation logged to database: ID 38, tell me some bedtime story but it should not be mor...
+  [1m[36mCharacter Load (0.0ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? AND "characters"."id" = ? LIMIT ?[0m  [["active", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chat_controller.rb:37:in 'ChatController#send_message'
+Completed 200 OK in 3922ms (Views: 0.1ms | ActiveRecord: 1.2ms | Allocations: 9399)
+
+
