@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2) do
+ActiveRecord::Schema[7.1].define(version: 2025_09_27_060110) do
+  create_table "characters", force: :cascade do |t|
+    t.string "name"
+    t.text "personality_prompt"
+    t.text "voice_settings"
+    t.string "emoji"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "conversations", force: :cascade do |t|
     t.text "user_message", null: false
     t.text "ai_response", null: false

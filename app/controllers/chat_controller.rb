@@ -3,11 +3,13 @@ class ChatController < ApplicationController
   
   def index
     # Main chat interface
+    @characters = Character.active.order(:name)
   end
   
   def send_message
     user_message = params[:message]
     session_id = params[:session_id] || generate_session_id
+    character_id = params[:character_id]
     
     if user_message.blank?
       render json: { error: 'Message cannot be empty' }, status: 400
@@ -25,16 +27,25 @@ class ChatController < ApplicationController
                                                  } 
                                                }
       
-      # Send message to Ollama with conversation context
-      response = OllamaService.new.chat(user_message, conversation_context)
+      # Send message to Ollama with conversation context and character
+      response = OllamaService.new.chat(user_message, conversation_context, character_id)
       
       # Log the conversation with session ID
       ConversationLogger.log(user_message, response, session_id)
       
+      # Get character info for voice settings
+      character = Character.active.find_by(id: character_id) if character_id.present?
+      
       render json: { 
         response: response,
         timestamp: Time.current.iso8601,
-        session_id: session_id
+        session_id: session_id,
+        character: character ? {
+          id: character.id,
+          name: character.name,
+          emoji: character.emoji,
+          voice_settings: character.voice_config
+        } : nil
       }
     rescue => e
       Rails.logger.error "Chat error: #{e.message}"

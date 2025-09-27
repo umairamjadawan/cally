@@ -36,7 +36,7 @@ class OllamaService
     end
   end
   
-  def chat(user_message, conversation_context = [])
+  def chat(user_message, conversation_context = [], character_id = nil)
     # Ensure Ollama is running
     unless ollama_running?
       raise "Ollama is not running. Please start Ollama first."
@@ -47,11 +47,17 @@ class OllamaService
       pull_model
     end
     
+    # Get character personality if specified
+    character = nil
+    if character_id.present?
+      character = Character.active.find_by(id: character_id)
+    end
+    
     # Build conversation history with context
     messages = [
       {
         role: 'system',
-        content: self.class.build_system_prompt
+        content: character&.personality_prompt || self.class.build_system_prompt
       }
     ]
     

@@ -7,8 +7,12 @@ puts "🌱 Cally - Database seeding..."
 # Seed default prompt configurations
 PromptConfig.seed_default_configs
 
+# Seed character personalities
+Character.seed_characters
+
 puts "✅ Default configuration settings created!"
 puts "📊 #{PromptConfig.count} configuration options available"
+puts "🎭 #{Character.count} character personalities available!"
 puts ""
 puts "🎯 Cally is ready with default family-friendly settings"
 puts "👨‍👩‍👧‍👦 Parents can customize Cally at: /settings"

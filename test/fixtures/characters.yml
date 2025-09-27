@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  personality_prompt: MyText
+  voice_settings: MyText
+  emoji: MyString
+  active: false
+
+two:
+  name: MyString
+  personality_prompt: MyText
+  voice_settings: MyText
+  emoji: MyString
+  active: false

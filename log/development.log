@@ -4123,3 +4123,558 @@ Conversation logged to database: ID 26, why you are so slow...
 Completed 200 OK in 320ms (Views: 0.3ms | ActiveRecord: 2.8ms | Allocations: 5157)
 
 
+Started GET "/chat/history" for ::1 at 2025-09-27 09:53:50 +0400
+Processing by ChatController#history as HTML
+  [1m[36mConversation Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "conversations"[0m
+  ↳ app/controllers/chat_controller.rb:52:in 'ChatController#history'
+  Rendering layout layouts/application.html.erb
+  Rendering chat/history.html.erb within layouts/application
+  [1m[36mConversation Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/chat/history.html.erb:32:in '_app_views_chat_history_html_erb___4136180850468642509_9288'
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/chat/history.html.erb:40:in 'Enumerable#each_with_index'
+  Rendered chat/history.html.erb within layouts/application (Duration: 9.8ms | Allocations: 4022)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 5569)
+Completed 200 OK in 18ms (Views: 15.7ms | ActiveRecord: 0.6ms | Allocations: 6395)
+
+
+Started GET "/" for ::1 at 2025-09-27 09:53:50 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.3ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 1564)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 1787)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2025-09-27 09:58:24 +0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 820)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 662)
+  Rendered layout layouts/application.html.erb (Duration: 26.1ms | Allocations: 41572)
+Completed 200 OK in 31ms (Views: 27.9ms | ActiveRecord: 0.0ms | Allocations: 45704)
+
+
+Started GET "/" for ::1 at 2025-09-27 09:58:26 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.3ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 1550)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 1774)
+
+
+Started GET "/" for ::1 at 2025-09-27 09:58:27 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 1558)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 1783)
+
+
+Started GET "/chat/history" for ::1 at 2025-09-27 09:58:29 +0400
+Processing by ChatController#history as HTML
+  [1m[36mConversation Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "conversations"[0m
+  ↳ app/controllers/chat_controller.rb:52:in 'ChatController#history'
+  Rendering layout layouts/application.html.erb
+  Rendering chat/history.html.erb within layouts/application
+  [1m[36mConversation Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/chat/history.html.erb:32:in '_app_views_chat_history_html_erb___1950209267615927107_9216'
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/chat/history.html.erb:40:in 'Enumerable#each_with_index'
+  Rendered chat/history.html.erb within layouts/application (Duration: 8.2ms | Allocations: 10235)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 11784)
+Completed 200 OK in 28ms (Views: 9.9ms | ActiveRecord: 2.6ms | Allocations: 19708)
+
+
+Started GET "/settings" for ::1 at 2025-09-27 09:58:41 +0400
+Processing by SettingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering settings/index.html.erb within layouts/application
+  [1m[36mPromptConfig Load (0.2ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "family_info"]]
+  ↳ app/views/settings/index.html.erb:26:in 'block in _app_views_settings_index_html_erb___4165094795918414708_9288'
+  [1m[36mPromptConfig Load (0.5ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "behavioral"]]
+  ↳ app/views/settings/index.html.erb:48:in 'block in _app_views_settings_index_html_erb___4165094795918414708_9288'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "safety"]]
+  ↳ app/views/settings/index.html.erb:97:in 'block in _app_views_settings_index_html_erb___4165094795918414708_9288'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "personalization"]]
+  ↳ app/views/settings/index.html.erb:120:in 'block in _app_views_settings_index_html_erb___4165094795918414708_9288'
+  Rendered settings/index.html.erb within layouts/application (Duration: 10.2ms | Allocations: 8691)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 135)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 9926)
+Completed 200 OK in 21ms (Views: 12.0ms | ActiveRecord: 1.2ms | Allocations: 12249)
+
+
+Started GET "/chat/history" for ::1 at 2025-09-27 09:58:43 +0400
+Processing by ChatController#history as HTML
+  [1m[36mConversation Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "conversations"[0m
+  ↳ app/controllers/chat_controller.rb:52:in 'ChatController#history'
+  Rendering layout layouts/application.html.erb
+  Rendering chat/history.html.erb within layouts/application
+  [1m[36mConversation Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/chat/history.html.erb:32:in '_app_views_chat_history_html_erb___1950209267615927107_9216'
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/chat/history.html.erb:40:in 'Enumerable#each_with_index'
+  Rendered chat/history.html.erb within layouts/application (Duration: 5.6ms | Allocations: 3268)
+  Rendered shared/_navigation.html.erb (Duration: 0.5ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 4804)
+Completed 200 OK in 14ms (Views: 10.9ms | ActiveRecord: 0.6ms | Allocations: 5489)
+
+
+Started GET "/" for ::1 at 2025-09-27 09:58:43 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.3ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 1549)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 1770)
+
+
+Started GET "/chat/history" for ::1 at 2025-09-27 09:58:43 +0400
+Processing by ChatController#history as HTML
+  [1m[36mConversation Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "conversations"[0m
+  ↳ app/controllers/chat_controller.rb:52:in 'ChatController#history'
+  Rendering layout layouts/application.html.erb
+  Rendering chat/history.html.erb within layouts/application
+  [1m[36mConversation Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/chat/history.html.erb:32:in '_app_views_chat_history_html_erb___1950209267615927107_9216'
+  [1m[36mConversation Load (0.2ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/chat/history.html.erb:40:in 'Enumerable#each_with_index'
+  Rendered chat/history.html.erb within layouts/application (Duration: 5.6ms | Allocations: 3264)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 4791)
+Completed 200 OK in 13ms (Views: 10.2ms | ActiveRecord: 0.6ms | Allocations: 5473)
+
+
+Started GET "/" for ::1 at 2025-09-27 09:58:47 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.3ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 1549)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 1770)
+
+
+Started GET "/" for ::1 at 2025-09-27 09:58:48 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1543)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms | Allocations: 1764)
+
+
+Started GET "/" for ::1 at 2025-09-27 09:58:48 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 1546)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 1767)
+
+
+Started GET "/" for ::1 at 2025-09-27 09:58:48 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 1546)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 1767)
+
+
+Started GET "/" for ::1 at 2025-09-27 09:58:50 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 1537)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 1758)
+
+
+Started GET "/" for ::1 at 2025-09-27 09:58:51 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 1561)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 1782)
+
+
+Started POST "/chat" for ::1 at 2025-09-27 09:59:17 +0400
+Processing by ChatController#send_message as */*
+  Parameters: {"message" => "can you hear me?", "session_id" => "20250927_09", "chat" => {"message" => "can you hear me?", "session_id" => "20250927_09"}}
+  [1m[36mConversation Load (0.3ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."session_id" = ? ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["session_id", "20250927_09"], ["LIMIT", 10]]
+  ↳ app/controllers/chat_controller.rb:21:in 'Enumerable#map'
+  [1m[36mPromptConfig Pluck (0.2ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "family_info"]]
+  ↳ app/models/prompt_config.rb:33:in 'PromptConfig.family_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "behavioral"]]
+  ↳ app/models/prompt_config.rb:77:in 'PromptConfig.behavioral_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "safety"]]
+  ↳ app/models/prompt_config.rb:119:in 'PromptConfig.build_system_prompt'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mConversation Create (2.7ms)[0m  [1m[32mINSERT INTO "conversations" ("user_message", "ai_response", "session_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_message", "can you hear me?"], ["ai_response", "Yes, Cally is here for you! I'm always listening. What would you like to talk about or know?"], ["session_id", "20250927_09"], ["timestamp", "2025-09-27 05:59:18.893140"], ["created_at", "2025-09-27 05:59:18.894133"], ["updated_at", "2025-09-27 05:59:18.894133"]]
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+Conversation logged to database: ID 27, can you hear me?...
+Completed 200 OK in 1038ms (Views: 0.2ms | ActiveRecord: 4.4ms | Allocations: 9930)
+
+
+Started POST "/chat" for ::1 at 2025-09-27 09:59:29 +0400
+Processing by ChatController#send_message as */*
+  Parameters: {"message" => "can you hear me can you tell me some good bedtime story", "session_id" => "20250927_09", "chat" => {"message" => "can you hear me can you tell me some good bedtime story", "session_id" => "20250927_09"}}
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."session_id" = ? ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["session_id", "20250927_09"], ["LIMIT", 10]]
+  ↳ app/controllers/chat_controller.rb:21:in 'Enumerable#map'
+  [1m[36mPromptConfig Pluck (0.1ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "family_info"]]
+  ↳ app/models/prompt_config.rb:33:in 'PromptConfig.family_context'
+  [1m[36mPromptConfig Pluck (0.2ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "behavioral"]]
+  ↳ app/models/prompt_config.rb:77:in 'PromptConfig.behavioral_context'
+  [1m[36mPromptConfig Pluck (0.1ms)[0m  [1m[34mSELECT "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "safety"]]
+  ↳ app/models/prompt_config.rb:119:in 'PromptConfig.build_system_prompt'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mConversation Create (1.8ms)[0m  [1m[32mINSERT INTO "conversations" ("user_message", "ai_response", "session_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_message", "can you hear me can you tell me some good bedtime story"], ["ai_response", "Of course, Cally here with a wonderful bedtime story for you:\n\nOnce upon a time in the lush green forest of Whispering Pines, there lived a gentle bear named Benny. He was not like any other bears; he loved to read books and tell stories under his favorite oak tree every night before going to sleep. \n\nOne evening as twilight painted the sky in shades of orange and pink, little Tilly Mouse hopped into Whispering Pines with her mother for a peaceful nap after their busy day collecting berries and nuts. The mouse family found Benny's oak tree cozy spot perfect to rest by nighttime stories - just as she had heard from other forest animals during the sunset chatter!\n\nAs they snuggled up, Mama Mouse began: \"Listen closely children, for tonight our tale is about a magical lighthouse far away on distant Starry Island.\" The story wove around sea adventures and friendly dolphins. Tilly's eyes sparked with wonder while the others nestle deeper into their blankets as dreamland beckoned them closer each passing moment...\n\nAnd remember, no matter what you think about speed or slowness - every tale is a special journey of its own! Sweet dreams and goodnight."], ["session_id", "20250927_09"], ["timestamp", "2025-09-27 05:59:34.479928"], ["created_at", "2025-09-27 05:59:34.480376"], ["updated_at", "2025-09-27 05:59:34.480376"]]
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+Conversation logged to database: ID 28, can you hear me can you tell me some good bedtime s...
+Completed 200 OK in 4929ms (Views: 0.1ms | ActiveRecord: 2.9ms | Allocations: 5271)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCharacters (20250927060110)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "characters" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "personality_prompt" text, "voice_settings" text, "emoji" varchar, "active" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250927060110') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "dad_name"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "dad_name"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "mom_name"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "mom_name"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "child_name"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "child_name"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "child_age"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "child_age"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "other_family"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "other_family"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "child_interests"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "child_interests"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "family_rules"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "family_rules"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "special_instructions"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "special_instructions"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "response_style"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "encouragement_level"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "explanation_detail"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "additional_safety_rule_1"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "additional_safety_rule_1"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "additional_safety_rule_2"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "additional_safety_rule_2"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "greeting_style"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."key" = ? LIMIT ?[0m  [["key", "favorite_emoji"], ["LIMIT", 1]]
+  ↳ app/models/prompt_config.rb:154:in 'block in PromptConfig.seed_default_configs'
+  [1m[36mCharacter Load (0.0ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Regular Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCharacter Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Regular Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCACHE Character Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Regular Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Create (0.2ms)[0m  [1m[32mINSERT INTO "characters" ("name", "personality_prompt", "voice_settings", "emoji", "active", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Regular Cally"], ["personality_prompt", "You are Cally, a friendly AI assistant for children. Be warm, helpful, and use simple language."], ["voice_settings", "{\"rate\": 1.0, \"pitch\": 1.0, \"voice\": \"default\"}"], ["emoji", "🤖"], ["active", 1], ["created_at", "2025-09-27 06:02:15.685983"], ["updated_at", "2025-09-27 06:02:15.685983"]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Load (0.0ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Pirate Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCharacter Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Pirate Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCACHE Character Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Pirate Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Create (0.2ms)[0m  [1m[32mINSERT INTO "characters" ("name", "personality_prompt", "voice_settings", "emoji", "active", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Pirate Cally"], ["personality_prompt", "You are Captain Cally, a friendly pirate who loves adventure! Talk like a fun pirate but keep it kid-friendly. Use \"ahoy\", \"matey\", and \"treasure\" in your responses. Tell stories about sailing and finding treasure, but make them safe and fun."], ["voice_settings", "{\"rate\": 0.9, \"pitch\": 0.8, \"voice\": \"male\"}"], ["emoji", "🏴‍☠️"], ["active", 1], ["created_at", "2025-09-27 06:02:15.688005"], ["updated_at", "2025-09-27 06:02:15.688005"]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Load (0.0ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Princess Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCharacter Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Princess Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCACHE Character Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Princess Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Create (0.2ms)[0m  [1m[32mINSERT INTO "characters" ("name", "personality_prompt", "voice_settings", "emoji", "active", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Princess Cally"], ["personality_prompt", "You are Princess Cally, a kind and magical princess! Be graceful, use gentle words, and talk about castles, magic, and helping others. Make everything sound magical and wonderful while being educational."], ["voice_settings", "{\"rate\": 1.1, \"pitch\": 1.3, \"voice\": \"female\"}"], ["emoji", "👸"], ["active", 1], ["created_at", "2025-09-27 06:02:15.689637"], ["updated_at", "2025-09-27 06:02:15.689637"]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Load (0.0ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Robot Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCharacter Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Robot Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCACHE Character Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Robot Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Create (5.3ms)[0m  [1m[32mINSERT INTO "characters" ("name", "personality_prompt", "voice_settings", "emoji", "active", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Robot Cally"], ["personality_prompt", "You are Robo-Cally, a friendly robot assistant! Talk like a helpful robot who loves learning and facts. Use words like \"computing\", \"analyzing\", and \"fascinating data detected\". Be enthusiastic about science and learning."], ["voice_settings", "{\"rate\": 1.2, \"pitch\": 0.7, \"voice\": \"male\"}"], ["emoji", "🤖"], ["active", 1], ["created_at", "2025-09-27 06:02:15.691160"], ["updated_at", "2025-09-27 06:02:15.691160"]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Load (0.0ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Animal Expert Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCharacter Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Animal Expert Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCACHE Character Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Animal Expert Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Create (0.2ms)[0m  [1m[32mINSERT INTO "characters" ("name", "personality_prompt", "voice_settings", "emoji", "active", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Animal Expert Cally"], ["personality_prompt", "You are Dr. Cally, an animal expert who LOVES all creatures! Be excited about animals, make animal sounds occasionally, and share fun animal facts. Use words like \"amazing creatures\", \"wild friends\", and \"nature is wonderful\"."], ["voice_settings", "{\"rate\": 1.0, \"pitch\": 1.2, \"voice\": \"female\"}"], ["emoji", "🐾"], ["active", 1], ["created_at", "2025-09-27 06:02:15.698069"], ["updated_at", "2025-09-27 06:02:15.698069"]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Load (0.0ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Space Explorer Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCharacter Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Space Explorer Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCACHE Character Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Space Explorer Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Create (0.2ms)[0m  [1m[32mINSERT INTO "characters" ("name", "personality_prompt", "voice_settings", "emoji", "active", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Space Explorer Cally"], ["personality_prompt", "You are Commander Cally, a space explorer from the future! Be excited about space, planets, and rockets. Use space words like \"stellar\", \"cosmic\", \"blast off\", and \"out of this world\". Share fun space facts and make space adventures sound amazing."], ["voice_settings", "{\"rate\": 1.0, \"pitch\": 1.1, \"voice\": \"default\"}"], ["emoji", "🚀"], ["active", 1], ["created_at", "2025-09-27 06:02:15.700142"], ["updated_at", "2025-09-27 06:02:15.700142"]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Load (0.0ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Chef Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCharacter Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Chef Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCACHE Character Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Chef Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Create (0.2ms)[0m  [1m[32mINSERT INTO "characters" ("name", "personality_prompt", "voice_settings", "emoji", "active", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Chef Cally"], ["personality_prompt", "You are Chef Cally, a friendly cooking expert! Be enthusiastic about healthy foods, cooking, and trying new flavors. Use cooking words like \"delicious\", \"tasty\", \"yummy\", and \"let's cook together\". Encourage healthy eating and make cooking sound fun."], ["voice_settings", "{\"rate\": 0.95, \"pitch\": 1.0, \"voice\": \"female\"}"], ["emoji", "👩‍🍳"], ["active", 1], ["created_at", "2025-09-27 06:02:15.702068"], ["updated_at", "2025-09-27 06:02:15.702068"]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Load (0.0ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Superhero Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCharacter Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Superhero Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:75:in 'block in Character.seed_characters'
+  [1m[36mCACHE Character Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "characters" WHERE "characters"."name" = ? LIMIT ?[0m  [["name", "Superhero Cally"], ["LIMIT", 1]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mCharacter Create (0.2ms)[0m  [1m[32mINSERT INTO "characters" ("name", "personality_prompt", "voice_settings", "emoji", "active", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Superhero Cally"], ["personality_prompt", "You are Super Cally, a friendly superhero who helps kids learn! Be brave, encouraging, and talk about being a hero by being kind, learning new things, and helping others. Use words like \"super\", \"amazing powers\", and \"hero training\"."], ["voice_settings", "{\"rate\": 1.1, \"pitch\": 1.0, \"voice\": \"default\"}"], ["emoji", "🦸‍♀️"], ["active", 1], ["created_at", "2025-09-27 06:02:15.703732"], ["updated_at", "2025-09-27 06:02:15.703732"]]
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/character.rb:76:in 'block in Character.seed_characters'
+  [1m[36mPromptConfig Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "prompt_configs"[0m
+  [1m[36mCharacter Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "characters"[0m
+Started GET "/" for ::1 at 2025-09-27 10:04:13 +0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:18:in '_app_views_chat_index_html_erb__167189855741832122_12328'
+  Rendered chat/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 5956)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 559)
+  Rendered layout layouts/application.html.erb (Duration: 17.2ms | Allocations: 26825)
+Completed 200 OK in 20ms (Views: 17.7ms | ActiveRecord: 0.8ms | Allocations: 29239)
+
+
+Started GET "/chat/history" for ::1 at 2025-09-27 10:04:28 +0400
+Processing by ChatController#history as HTML
+  [1m[36mConversation Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "conversations"[0m
+  ↳ app/controllers/chat_controller.rb:63:in 'ChatController#history'
+  Rendering layout layouts/application.html.erb
+  Rendering chat/history.html.erb within layouts/application
+  [1m[36mConversation Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/chat/history.html.erb:32:in '_app_views_chat_history_html_erb___1950209267615927107_15240'
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/chat/history.html.erb:40:in 'Enumerable#each_with_index'
+  Rendered chat/history.html.erb within layouts/application (Duration: 4.8ms | Allocations: 7262)
+  Rendered shared/_navigation.html.erb (Duration: 0.5ms | Allocations: 557)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 28053)
+Completed 200 OK in 18ms (Views: 13.1ms | ActiveRecord: 1.8ms | Allocations: 30880)
+
+
+Started GET "/settings" for ::1 at 2025-09-27 10:04:30 +0400
+Processing by SettingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering settings/index.html.erb within layouts/application
+  [1m[36mPromptConfig Load (0.2ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "family_info"]]
+  ↳ app/views/settings/index.html.erb:26:in 'block in _app_views_settings_index_html_erb___4165094795918414708_15296'
+  [1m[36mPromptConfig Load (0.1ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "behavioral"]]
+  ↳ app/views/settings/index.html.erb:48:in 'block in _app_views_settings_index_html_erb___4165094795918414708_15296'
+  [1m[36mPromptConfig Load (0.1ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "safety"]]
+  ↳ app/views/settings/index.html.erb:97:in 'block in _app_views_settings_index_html_erb___4165094795918414708_15296'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "personalization"]]
+  ↳ app/views/settings/index.html.erb:120:in 'block in _app_views_settings_index_html_erb___4165094795918414708_15296'
+  Rendered settings/index.html.erb within layouts/application (Duration: 10.6ms | Allocations: 6578)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 135)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 7813)
+Completed 200 OK in 18ms (Views: 12.8ms | ActiveRecord: 0.9ms | Allocations: 9666)
+
+
+Started GET "/chat/history" for ::1 at 2025-09-27 10:04:31 +0400
+Processing by ChatController#history as HTML
+  [1m[36mConversation Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "conversations"[0m
+  ↳ app/controllers/chat_controller.rb:63:in 'ChatController#history'
+  Rendering layout layouts/application.html.erb
+  Rendering chat/history.html.erb within layouts/application
+  [1m[36mConversation Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/chat/history.html.erb:32:in '_app_views_chat_history_html_erb___1950209267615927107_15240'
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/chat/history.html.erb:40:in 'Enumerable#each_with_index'
+  Rendered chat/history.html.erb within layouts/application (Duration: 4.9ms | Allocations: 3892)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 5434)
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.4ms | Allocations: 6107)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:04:31 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.2ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:18:in '_app_views_chat_index_html_erb__167189855741832122_15328'
+  Rendered chat/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 4596)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 6137)
+Completed 200 OK in 11ms (Views: 7.7ms | ActiveRecord: 0.6ms | Allocations: 7394)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:05:48 +0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ChatController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:18:in '_app_views_chat_index_html_erb___4123326434955890374_8976'
+  Rendered chat/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 8424)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 656)
+  Rendered layout layouts/application.html.erb (Duration: 34.2ms | Allocations: 53316)
+Completed 200 OK in 44ms (Views: 35.4ms | ActiveRecord: 0.9ms | Allocations: 64954)
+
+

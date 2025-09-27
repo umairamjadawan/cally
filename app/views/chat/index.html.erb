@@ -8,6 +8,26 @@
       </div>
     </div>
     
+    <!-- Character Selection -->
+    <div class="character-selection" id="characterSelection">
+      <div class="character-header">
+        <span class="emoji">🎭</span>
+        <strong>Choose Your Cally:</strong>
+      </div>
+      <div class="character-grid">
+        <% @characters.each do |character| %>
+          <button class="character-btn" 
+                  data-character-id="<%= character.id %>"
+                  data-character-name="<%= character.name %>"
+                  data-voice-settings="<%= character.voice_settings.html_safe %>"
+                  title="<%= character.name %>">
+            <span class="character-emoji"><%= character.emoji %></span>
+            <span class="character-name"><%= character.name.gsub(' Cally', '') %></span>
+          </button>
+        <% end %>
+      </div>
+    </div>
+    
     <div class="status" id="status"></div>
     
     <div class="input-container">
@@ -43,6 +63,7 @@ class CallyChat {
     this.micButton = document.getElementById('micButton');
     this.speakButton = document.getElementById('speakButton');
     this.status = document.getElementById('status');
+    this.characterSelection = document.getElementById('characterSelection');
     
     // Check if we're actually on the chat page
     if (!this.chatMessages || !this.chatInput || !this.sendButton) {
@@ -52,6 +73,8 @@ class CallyChat {
     
     this.recognition = null;
     this.synthesis = window.speechSynthesis;
+    this.selectedCharacter = null;
+    this.currentVoiceSettings = { rate: 1.0, pitch: 1.0, voice: 'default' };
     this.lastAiMessage = '';
     
     // Generate or retrieve session ID for conversation context
@@ -83,6 +106,11 @@ class CallyChat {
     
     this.micButton.addEventListener('click', () => this.toggleSpeechRecognition());
     this.speakButton.addEventListener('click', () => this.speakLastMessage());
+    
+    // Character selection event listeners
+    document.querySelectorAll('.character-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => this.selectCharacter(e.target.closest('.character-btn')));
+    });
   }
   
   initializeSpeechRecognition() {
@@ -146,7 +174,11 @@ class CallyChat {
           'Content-Type': 'application/json',
           'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content
         },
-        body: JSON.stringify({ message: message, session_id: this.sessionId })
+        body: JSON.stringify({ 
+          message: message, 
+          session_id: this.sessionId,
+          character_id: this.selectedCharacter?.id
+        })
       });
       
       const data = await response.json();
@@ -154,6 +186,12 @@ class CallyChat {
       if (response.ok) {
         this.addMessage(data.response, 'ai');
         this.lastAiMessage = data.response;
+        
+        // Update voice settings if character info is returned
+        if (data.character && data.character.voice_settings) {
+          this.currentVoiceSettings = data.character.voice_settings;
+        }
+        
         this.setStatus('', '');
         
         // Don't auto-speak - only speak when user clicks speaker button
@@ -181,6 +219,36 @@ class CallyChat {
     this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
   }
   
+  selectCharacter(characterBtn) {
+    // Remove active class from all character buttons
+    document.querySelectorAll('.character-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    
+    // Add active class to selected character
+    characterBtn.classList.add('active');
+    
+    // Store selected character info
+    this.selectedCharacter = {
+      id: characterBtn.dataset.characterId,
+      name: characterBtn.dataset.characterName,
+      voiceSettings: JSON.parse(characterBtn.dataset.voiceSettings || '{}')
+    };
+    
+    // Update voice settings immediately
+    this.currentVoiceSettings = this.selectedCharacter.voiceSettings;
+    
+    // Show confirmation message
+    const characterName = this.selectedCharacter.name;
+    const emoji = characterBtn.querySelector('.character-emoji').textContent;
+    this.setStatus(`${emoji} Now talking to ${characterName}!`, 'character-selected');
+    
+    // Clear status after 2 seconds
+    setTimeout(() => {
+      this.setStatus('', '');
+    }, 2000);
+  }
+
   speakLastMessage() {
     if (this.lastAiMessage) {
       this.speakMessage(this.lastAiMessage);
@@ -193,20 +261,43 @@ class CallyChat {
       this.synthesis.cancel();
       
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.8;
-      utterance.pitch = 1.2;
+      
+      // Apply character voice settings
+      utterance.rate = this.currentVoiceSettings.rate || 1.0;
+      utterance.pitch = this.currentVoiceSettings.pitch || 1.0;
       utterance.volume = 0.8;
       
-      // Try to use a child-friendly voice
+      // Get available voices
       const voices = this.synthesis.getVoices();
-      const preferredVoice = voices.find(voice => 
-        voice.name.includes('Google') && voice.lang.includes('en') ||
-        voice.name.includes('Alex') ||
-        voice.name.includes('Samantha')
-      );
       
-      if (preferredVoice) {
-        utterance.voice = preferredVoice;
+      // Select voice based on character settings
+      let selectedVoice = null;
+      const voiceType = this.currentVoiceSettings.voice || 'default';
+      
+      if (voiceType === 'female') {
+        selectedVoice = voices.find(voice => 
+          voice.name.includes('Samantha') || 
+          voice.name.includes('Karen') || 
+          voice.name.includes('Google') && voice.name.includes('female') ||
+          voice.name.includes('US English Female')
+        );
+      } else if (voiceType === 'male') {
+        selectedVoice = voices.find(voice => 
+          voice.name.includes('Alex') || 
+          voice.name.includes('Google') && voice.name.includes('male') ||
+          voice.name.includes('US English Male')
+        );
+      } else {
+        // Default voice selection
+        selectedVoice = voices.find(voice => 
+          voice.name.includes('Google') && voice.lang.includes('en') ||
+          voice.name.includes('Alex') ||
+          voice.name.includes('Samantha')
+        );
+      }
+      
+      if (selectedVoice) {
+        utterance.voice = selectedVoice;
       }
       
       utterance.onstart = () => {
