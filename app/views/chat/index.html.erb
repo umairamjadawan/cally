@@ -8,23 +8,23 @@
       </div>
     </div>
     
-    <!-- Character Selection -->
-    <div class="character-selection" id="characterSelection">
-      <div class="character-header">
-        <span class="emoji">🎭</span>
-        <strong>Choose Your Cally:</strong>
-      </div>
-      <div class="character-grid">
-        <% @characters.each do |character| %>
-          <button class="character-btn" 
-                  data-character-id="<%= character.id %>"
-                  data-character-name="<%= character.name %>"
-                  data-voice-settings="<%= character.voice_settings.html_safe %>"
-                  title="<%= character.name %>">
-            <span class="character-emoji"><%= character.emoji %></span>
-            <span class="character-name"><%= character.name.gsub(' Cally', '') %></span>
-          </button>
-        <% end %>
+    <!-- Character Selection Dropdown -->
+    <div class="character-dropdown-container" id="characterSelection">
+      <div class="character-dropdown">
+        <select id="characterSelect" class="character-select">
+          <option value="">🤖 Choose Your Cally...</option>
+          <% @characters.each do |character| %>
+            <option value="<%= character.id %>" 
+                    data-character-name="<%= character.name %>"
+                    data-character-emoji="<%= character.emoji %>"
+                    data-voice-settings="<%= character.voice_settings.html_safe %>">
+              <%= character.emoji %> <%= character.name %>
+            </option>
+          <% end %>
+        </select>
+        <button class="speaker-btn" id="characterSpeakerBtn" title="Test character voice" disabled>
+          🔊
+        </button>
       </div>
     </div>
     
@@ -144,12 +144,19 @@ class CallyChat {
     this.micButton.addEventListener('click', () => this.toggleSpeechRecognition());
     this.speakButton.addEventListener('click', () => this.speakLastMessage());
     
-    // Character selection event listeners
-    document.querySelectorAll('.character-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => this.selectCharacter(e.target.closest('.character-btn')));
-    });
+    // Character dropdown event listener
+    const characterSelect = document.getElementById('characterSelect');
+    if (characterSelect) {
+      characterSelect.addEventListener('change', (e) => this.selectCharacterFromDropdown(e.target));
+    }
     
-    // Test voice button listener
+    // Character speaker button listener
+    const characterSpeakerBtn = document.getElementById('characterSpeakerBtn');
+    if (characterSpeakerBtn) {
+      characterSpeakerBtn.addEventListener('click', () => this.testCurrentCharacterVoice());
+    }
+    
+    // Test voice button listener (in active character indicator)
     const testVoiceBtn = document.getElementById('testVoiceBtn');
     if (testVoiceBtn) {
       testVoiceBtn.addEventListener('click', () => this.testCurrentCharacterVoice());
@@ -262,20 +269,37 @@ class CallyChat {
     this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
   }
   
-  selectCharacter(characterBtn) {
-    // Remove active class from all character buttons
-    document.querySelectorAll('.character-btn').forEach(btn => {
-      btn.classList.remove('active');
-    });
+  selectCharacterFromDropdown(selectElement) {
+    const selectedOption = selectElement.options[selectElement.selectedIndex];
     
-    // Add active class to selected character
-    characterBtn.classList.add('active');
+    if (!selectedOption || !selectedOption.value) {
+      // No character selected - reset
+      this.selectedCharacter = null;
+      this.currentVoiceSettings = { rate: 1.0, pitch: 1.0, voice: 'default' };
+      
+      // Hide active character indicator
+      const activeCharacter = document.getElementById('activeCharacter');
+      if (activeCharacter) {
+        activeCharacter.style.display = 'none';
+      }
+      
+      // Disable speaker button
+      const speakerBtn = document.getElementById('characterSpeakerBtn');
+      if (speakerBtn) {
+        speakerBtn.disabled = true;
+      }
+      
+      this.setStatus('Character deselected', 'character-selected');
+      setTimeout(() => this.setStatus('', ''), 2000);
+      return;
+    }
     
     // Store selected character info
     this.selectedCharacter = {
-      id: characterBtn.dataset.characterId,
-      name: characterBtn.dataset.characterName,
-      voiceSettings: JSON.parse(characterBtn.dataset.voiceSettings || '{}')
+      id: selectedOption.value,
+      name: selectedOption.dataset.characterName,
+      emoji: selectedOption.dataset.characterEmoji,
+      voiceSettings: JSON.parse(selectedOption.dataset.voiceSettings || '{}')
     };
     
     // Update voice settings immediately
@@ -283,9 +307,11 @@ class CallyChat {
     console.log('🎭 Character selected:', this.selectedCharacter.name);
     console.log('🔊 Voice settings updated:', this.currentVoiceSettings);
     
-    // Show confirmation message
-    const characterName = this.selectedCharacter.name;
-    const emoji = characterBtn.querySelector('.character-emoji').textContent;
+    // Enable speaker button
+    const speakerBtn = document.getElementById('characterSpeakerBtn');
+    if (speakerBtn) {
+      speakerBtn.disabled = false;
+    }
     
     // Update active character indicator
     const activeCharacter = document.getElementById('activeCharacter');
@@ -293,14 +319,14 @@ class CallyChat {
     const activeName = document.getElementById('activeCharacterName');
     
     if (activeCharacter && activeEmoji && activeName) {
-      activeEmoji.textContent = emoji;
-      activeName.textContent = characterName;
+      activeEmoji.textContent = this.selectedCharacter.emoji;
+      activeName.textContent = this.selectedCharacter.name;
       activeCharacter.style.display = 'block';
     }
     
     // Test the voice immediately with a sample message
-    const testMessage = this.getCharacterTestMessage(characterName);
-    this.setStatus(`${emoji} Now talking to ${characterName}! Listen...`, 'character-selected');
+    const testMessage = this.getCharacterTestMessage(this.selectedCharacter.name);
+    this.setStatus(`${this.selectedCharacter.emoji} Now talking to ${this.selectedCharacter.name}! Listen...`, 'character-selected');
     
     // Speak the test message to demonstrate voice change
     setTimeout(() => {

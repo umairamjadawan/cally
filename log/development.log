@@ -4825,3 +4825,93 @@ Processing by ChatController#index as HTML
 Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 2479)
 
 
+Started GET "/" for ::1 at 2025-09-27 10:18:45 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.5ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:18:in '_app_views_chat_index_html_erb___4123326434955890374_18080'
+  Rendered chat/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 5189)
+  Rendered shared/_navigation.html.erb (Duration: 0.7ms | Allocations: 557)
+  Rendered layout layouts/application.html.erb (Duration: 16.1ms | Allocations: 27624)
+Completed 200 OK in 20ms (Views: 16.8ms | ActiveRecord: 0.9ms | Allocations: 29542)
+
+
+Started POST "/chat" for ::1 at 2025-09-27 10:19:00 +0400
+Processing by ChatController#send_message as */*
+  Parameters: {"message" => "hello bedtime story", "session_id" => "20250927_10", "chat" => {"message" => "hello bedtime story", "session_id" => "20250927_10"}}
+  [1m[36mConversation Load (0.2ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."session_id" = ? ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["session_id", "20250927_10"], ["LIMIT", 10]]
+  ↳ app/controllers/chat_controller.rb:23:in 'Enumerable#map'
+  [1m[36mPromptConfig Pluck (0.1ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "family_info"]]
+  ↳ app/models/prompt_config.rb:33:in 'PromptConfig.family_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "behavioral"]]
+  ↳ app/models/prompt_config.rb:77:in 'PromptConfig.behavioral_context'
+  [1m[36mPromptConfig Pluck (0.1ms)[0m  [1m[34mSELECT "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "safety"]]
+  ↳ app/models/prompt_config.rb:119:in 'PromptConfig.build_system_prompt'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mConversation Create (5.3ms)[0m  [1m[32mINSERT INTO "conversations" ("user_message", "ai_response", "session_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_message", "hello bedtime story"], ["ai_response", "Good evening! I’m Cally here to spin you a soft-spoken tale for tonight's sleepy slumber. Let me weave words into dreamland delights:\n\nOnce upon an enchanted twilight, in the quiet whisper of dusk, there was a little village nestled between two great mountains that kissed each other under blankets woven from silvery moonbeams and rosy clouds. In this snug corner world where time seemed to dance gently with nature's rhythm lived our storyteller friends:\n\n1. **Milo the Moonfrog** – He was a wise, old amphibian who hopped along lazily across lilypads and starlit ponds—always speaking in bubbles of wisdom that twirled up to touch dreams rather than water's surface. 🐸✨\n   - \"Milo shared stories as vast as the stars, each one a promise for tomorrow.\"\n   \n2. **Whiskers Willow** – A cat with fur like spun silk and eyes that sparkled under starlight—she danced in shadowy alleys but always returned to her cozy nook by moonbeam's glow, spinning tales of the night creatures who wandered far. 🌙✨\n   - \"Whiskers whispered secrets that only hearts as pure could hear.\"\n   \n3. **The Twinkling Twin Trees** – Two ancient guardians whose leaves shimmered with dewdrops of silver, their branches embracing the sky and inviting every wandering breeze to listen closely for whispers from beyond our realm. 🌲✨\n   - \"The trees held secrets tucked within each leaf’   ️—stories that stretch out over endless nights.\"\n    \n4. **Stella the Star** – A tiny flickering light, she gently guided our way through dreamy paths and twinkling trails until we reached her resting place in a sky embroidered with wonders beyond human sight—her soft lullaby promising safe passage to sweet slumber. ✨🌠\n   - \"Stella's gentle glow would paint the heavens, drawing us into dreamscapes draped across night’s canvas.\"\n   \n5. **The Gentle Gale** – A hushed breeze that carried tales of distant lands and whispered lullabies to every leafy ear it brushed—it was always present at the start or end, a comforting caress before sleep's sweet surrender: ☀️💭\n   - \"The gentle gale danced through our village like an unseen friend spinning yarns of distant worlds.\"\n   \nNow let’s journey together to where the twilight embraces us, and under Stella's watchful eye we drift. In this realm beneath moonlit skies: Milo hops across a pond as clear as glass; Whiskers Willow curls into her silken bed on an emerald mossy knoll while the Twinkling Twin Trees share their ancient stories with rustled leaves, and all around is Stella's lullaby that whispers us to sleep in a world filled with dreaming wonder.\n   \nAs our eyes close one by one under soft starlight’s promise of peaceful rest: \"Sleep tight,\" I whisper like the gentle night breeze through their branches, and soon you too will join Milo's moonfrog friends on adventures in slumberland—a place where every dream is a treasure waiting to be discovered at dawn.\n   \nDream sweetly now as we close our eyes under Stella’s watchful gaze; tomorrow brings new tales, but for tonight... just let the gentle gale carry you away on its soft caress—for in this village of whispered dreams and moonlit serenades: sleep is a friend waiting to wrap around your heart like warm velvet. Sweet slumbers be yours until we meet again beneath twilight's tranquil tapestry, my dearest storyteller-to-be. 🌜☕️💤✨"], ["session_id", "20250927_10"], ["timestamp", "2025-09-27 06:19:33.036894"], ["created_at", "2025-09-27 06:19:33.039156"], ["updated_at", "2025-09-27 06:19:33.039156"]]
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+Conversation logged to database: ID 32, hello bedtime story...
+Completed 200 OK in 32695ms (Views: 0.2ms | ActiveRecord: 6.6ms | Allocations: 10215)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:19:47 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:18:in '_app_views_chat_index_html_erb___4123326434955890374_21040'
+  Rendered chat/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 5117)
+  Rendered shared/_navigation.html.erb (Duration: 0.5ms | Allocations: 559)
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | Allocations: 26110)
+Completed 200 OK in 20ms (Views: 15.9ms | ActiveRecord: 1.1ms | Allocations: 28465)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:20:17 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:18:in '_app_views_chat_index_html_erb___4123326434955890374_21040'
+  Rendered chat/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 679)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 2213)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.1ms | Allocations: 2482)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:20:18 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:18:in '_app_views_chat_index_html_erb___4123326434955890374_21040'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 679)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 2219)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.1ms | Allocations: 2488)
+
+
+Started POST "/chat" for ::1 at 2025-09-27 10:20:38 +0400
+Processing by ChatController#send_message as */*
+  Parameters: {"message" => "Kelly can you tell me a pirate story", "session_id" => "20250927_10", "chat" => {"message" => "Kelly can you tell me a pirate story", "session_id" => "20250927_10"}}
+  [1m[36mConversation Load (0.2ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."session_id" = ? ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["session_id", "20250927_10"], ["LIMIT", 10]]
+  ↳ app/controllers/chat_controller.rb:23:in 'Enumerable#map'
+  [1m[36mPromptConfig Pluck (0.1ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "family_info"]]
+  ↳ app/models/prompt_config.rb:33:in 'PromptConfig.family_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "behavioral"]]
+  ↳ app/models/prompt_config.rb:77:in 'PromptConfig.behavioral_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "safety"]]
+  ↳ app/models/prompt_config.rb:119:in 'PromptConfig.build_system_prompt'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mConversation Create (2.4ms)[0m  [1m[32mINSERT INTO "conversations" ("user_message", "ai_response", "session_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_message", "Kelly can you tell me a pirate story"], ["ai_response", "Ahoy there matey! I'm Cally here to spin ye a tale of high seas adventure. Let’s set sail into the storm and follow Captain Kelly on her grand piracy escapade:\n\nOnce upon an ocean blue, in waters deep where mysteries dwell, lived young pirate named **Captain Kelly**—a hearty soul with eyes like sapphires that told of countless sunsets. Her ship was known far and wide as the *Glittering Marauder*, a vessel sturdy enough to brave Neptune's fury!\n\nThe tale begins on an evening painted by twilight when Captain Kelly spied upon her crow’s nest three mysterious islands shrouded in mist—a whisper of treasure 'neath their sway. With the compass pointing due West and a crew full hearty, she readies herself for voyage toward destiny's call:\n\n**Isle Serpentine Wraith (The First):** Our fierce leader hoisted her Jolly Roger as they approached this island that curved like waves beneath them. Kelly’s cutlass gleamed in the moonlight while rum-swigging crewmen whispered of curses and sea sprites guarding it with spells from ages past!\n\nUndaunted, she navigated through treacherous reefs using her keen sense for reading tides—like a wise seagull guiding wayward sailors home. She soon discovered the island wasn't just mist; 'twas full of tangled vines and exotic birds singing in harmony!\n\nOn their quest, **Isle Serpentine Wraith** held its secret well: an enchanted garden where trees bore golden fruit that could cure any ailment. The crew feasted on the succulent treats as Kelly knew this bounty would strengthen them for times of hardship 'fore they met greeneries—a blessing from Poseidon himself!\n\n**Isle Phantom’s Repose (The Second):** A mere league away, Captain Kelley's eyes caught the silhouette of a ship lurking beneath cannon smoke and flags. Not an ordinary vessel but one with sails woven by ghostly hands—the *Spectral Siren*. With her crew’s chants ringing strong like bell-towers, they challenged their spectral foes in battle!\n\nWith steel clashin' against metal and cannonball rattling 'cross the deck. Captain Kelly was a tempest herself: dodging blades of death as swiftly as lightning strikes an oak tree; her crew fought like titans, each man brandishing his cutlass with pride!\n\nThe Spectral Siren’s captain—a scurvy ghost named **Maurice the Misguided** (notorious for a pirate's misadventures), met Captain Kelly in battle. Yet when faced head-on and stripped of darkness, he found her heart as brave as she was fierce! The two adversaries struck an accord: to share their bounties without further squall—a pact like no other they had known 'fore on these wide waters's horizon.\n\nTheir final stop lay at the **Isle of Eternal Breeze**, where gales carried tales not just from above but also whispers beneath: a treasure chest with gold beyond measure and jewels that danced in moonlight like ocean waves caressing golden sands! Captain Kelly unearthed her prize; she bestowed it upon the crew who’d weather storms, plotted courses through fearsome waters—and stood as one for all time:\n\nAs they set course homeward 'neath stars that watched over seas unknown and adventures yet to come. The Glittering Marauder cut across azure waves on a journey filled with lessons of bravery, trust in friends (or foes) alike! And so it was—a story as vast as the ocean itself:\n\n\"And thus ends our tale under Kelly' щановище, where pirates sway to their own melodies. May your dreams be filled with sea serpents and horizons wide; for in every whispering wave lies a chance to steer towards destiny’s guiding star!\"\n\nAnd remember now—every good story should have you yearning 'til the morrow, seeking treasures of tales yet untold. Sail on with me here Cally! 🏴‍☠️🌍✨"], ["session_id", "20250927_10"], ["timestamp", "2025-09-27 06:21:16.245487"], ["created_at", "2025-09-27 06:21:16.246322"], ["updated_at", "2025-09-27 06:21:16.246322"]]
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+Conversation logged to database: ID 33, Kelly can you tell me a pirate story...
+Completed 200 OK in 37852ms (Views: 0.3ms | ActiveRecord: 4.6ms | Allocations: 12974)
+
+
