@@ -133,6 +133,23 @@
   transform: scale(1.05);
 }
 
+.debug-voice-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.debug-voice-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
   .character-dropdown-container {

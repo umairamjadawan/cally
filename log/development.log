@@ -4915,3 +4915,510 @@ Conversation logged to database: ID 33, Kelly can you tell me a pirate story...
 Completed 200 OK in 37852ms (Views: 0.3ms | ActiveRecord: 4.6ms | Allocations: 12974)
 
 
+Started GET "/" for ::1 at 2025-09-27 10:27:41 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.6ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___4123326434955890374_24016'
+  Rendered chat/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 5164)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 557)
+  Rendered layout layouts/application.html.erb (Duration: 13.0ms | Allocations: 27513)
+Completed 200 OK in 16ms (Views: 12.9ms | ActiveRecord: 1.0ms | Allocations: 29430)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:27:49 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___4123326434955890374_26960'
+  Rendered chat/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 5127)
+  Rendered shared/_navigation.html.erb (Duration: 0.3ms | Allocations: 557)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 25917)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 1.0ms | Allocations: 28270)
+
+
+Started GET "/chat/history" for ::1 at 2025-09-27 10:27:50 +0400
+Processing by ChatController#history as HTML
+  [1m[36mConversation Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "conversations"[0m
+  ↳ app/controllers/chat_controller.rb:63:in 'ChatController#history'
+  Rendering layout layouts/application.html.erb
+  Rendering chat/history.html.erb within layouts/application
+  [1m[36mConversation Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/chat/history.html.erb:32:in '_app_views_chat_history_html_erb__2761863662977429819_27000'
+  [1m[36mConversation Load (0.2ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/chat/history.html.erb:40:in 'Enumerable#each_with_index'
+  Rendered chat/history.html.erb within layouts/application (Duration: 16.3ms | Allocations: 9295)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 18.0ms | Allocations: 10871)
+Completed 200 OK in 23ms (Views: 17.9ms | ActiveRecord: 0.7ms | Allocations: 12638)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:27:51 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___4123326434955890374_26960'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 638)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 2174)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.1ms | Allocations: 2444)
+
+
+Started GET "/chat/history" for ::1 at 2025-09-27 10:27:52 +0400
+Processing by ChatController#history as HTML
+  [1m[36mConversation Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "conversations"[0m
+  ↳ app/controllers/chat_controller.rb:63:in 'ChatController#history'
+  Rendering layout layouts/application.html.erb
+  Rendering chat/history.html.erb within layouts/application
+  [1m[36mConversation Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/chat/history.html.erb:32:in '_app_views_chat_history_html_erb__2761863662977429819_27000'
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/chat/history.html.erb:40:in 'Enumerable#each_with_index'
+  Rendered chat/history.html.erb within layouts/application (Duration: 6.2ms | Allocations: 5799)
+  Rendered shared/_navigation.html.erb (Duration: 0.3ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 7335)
+Completed 200 OK in 11ms (Views: 8.7ms | ActiveRecord: 0.3ms | Allocations: 8007)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:27:53 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___4123326434955890374_26960'
+  Rendered chat/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2168)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.1ms | Allocations: 2438)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:27:55 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___4123326434955890374_26960'
+  Rendered chat/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.7ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 2183)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.1ms | Allocations: 2452)
+
+
+Started POST "/chat" for ::1 at 2025-09-27 10:28:05 +0400
+Processing by ChatController#send_message as */*
+  Parameters: {"message" => "tell me story", "session_id" => "20250927_10", "chat" => {"message" => "tell me story", "session_id" => "20250927_10"}}
+  [1m[36mConversation Load (0.3ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."session_id" = ? ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["session_id", "20250927_10"], ["LIMIT", 10]]
+  ↳ app/controllers/chat_controller.rb:23:in 'Enumerable#map'
+  [1m[36mPromptConfig Pluck (0.1ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "family_info"]]
+  ↳ app/models/prompt_config.rb:33:in 'PromptConfig.family_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "behavioral"]]
+  ↳ app/models/prompt_config.rb:77:in 'PromptConfig.behavioral_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "safety"]]
+  ↳ app/models/prompt_config.rb:119:in 'PromptConfig.build_system_prompt'
+Chat error: Net::ReadTimeout with #<TCPSocket:(closed)>
+Completed 500 Internal Server Error in 60026ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 6140)
+
+
+Started POST "/chat" for ::1 at 2025-09-27 10:30:01 +0400
+Processing by ChatController#send_message as */*
+  Parameters: {"message" => "Hi", "session_id" => "test_speed", "chat" => {"message" => "Hi", "session_id" => "test_speed"}}
+Can't verify CSRF token authenticity.
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."session_id" = ? ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["session_id", "test_speed"], ["LIMIT", 10]]
+  ↳ app/controllers/chat_controller.rb:23:in 'Enumerable#map'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "family_info"]]
+  ↳ app/models/prompt_config.rb:33:in 'PromptConfig.family_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "behavioral"]]
+  ↳ app/models/prompt_config.rb:77:in 'PromptConfig.behavioral_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "safety"]]
+  ↳ app/models/prompt_config.rb:119:in 'PromptConfig.build_system_prompt'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mConversation Create (2.0ms)[0m  [1m[32mINSERT INTO "conversations" ("user_message", "ai_response", "session_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_message", "Hi"], ["ai_response", "Hello! I'm Cally. How are you today? I think some kids might be a bit confused about me, so maybe we could play a fun game together to help them understand more about me. You know, if you see something funny or scary happening, let's try to explain it instead of laughing at it. Have a great day, Cally!"], ["session_id", "test_speed"], ["timestamp", "2025-09-27 06:30:14.700662"], ["created_at", "2025-09-27 06:30:14.704672"], ["updated_at", "2025-09-27 06:30:14.704672"]]
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+Conversation logged to database: ID 34, Hi...
+Completed 200 OK in 13528ms (Views: 0.2ms | ActiveRecord: 3.9ms | Allocations: 11311)
+
+
+Started POST "/chat" for ::1 at 2025-09-27 10:31:29 +0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ChatController#send_message as */*
+  Parameters: {"message" => "Hello", "session_id" => "speed_test_2", "chat" => {"message" => "Hello", "session_id" => "speed_test_2"}}
+Can't verify CSRF token authenticity.
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."session_id" = ? ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["session_id", "speed_test_2"], ["LIMIT", 10]]
+  ↳ app/controllers/chat_controller.rb:23:in 'Enumerable#map'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "family_info"]]
+  ↳ app/models/prompt_config.rb:33:in 'PromptConfig.family_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "behavioral"]]
+  ↳ app/models/prompt_config.rb:77:in 'PromptConfig.behavioral_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "safety"]]
+  ↳ app/models/prompt_config.rb:119:in 'PromptConfig.build_system_prompt'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mConversation Create (0.4ms)[0m  [1m[32mINSERT INTO "conversations" ("user_message", "ai_response", "session_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_message", "Hello"], ["ai_response", "Hello! How can I help you today? Do you have a question or something you'd like to talk about?"], ["session_id", "speed_test_2"], ["timestamp", "2025-09-27 06:31:29.530214"], ["created_at", "2025-09-27 06:31:29.534114"], ["updated_at", "2025-09-27 06:31:29.534114"]]
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+Conversation logged to database: ID 35, Hello...
+Completed 200 OK in 205ms (Views: 0.2ms | ActiveRecord: 1.9ms | Allocations: 23329)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:31:44 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_11920'
+  Rendered chat/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 6659)
+  Rendered shared/_navigation.html.erb (Duration: 0.6ms | Allocations: 653)
+  Rendered layout layouts/application.html.erb (Duration: 37.3ms | Allocations: 51720)
+Completed 200 OK in 45ms (Views: 39.1ms | ActiveRecord: 1.0ms | Allocations: 56494)
+
+
+Started POST "/chat" for ::1 at 2025-09-27 10:32:01 +0400
+Processing by ChatController#send_message as */*
+  Parameters: {"message" => "tell me 3 para story", "session_id" => "20250927_10", "chat" => {"message" => "tell me 3 para story", "session_id" => "20250927_10"}}
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."session_id" = ? ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["session_id", "20250927_10"], ["LIMIT", 10]]
+  ↳ app/controllers/chat_controller.rb:23:in 'Enumerable#map'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "family_info"]]
+  ↳ app/models/prompt_config.rb:33:in 'PromptConfig.family_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "behavioral"]]
+  ↳ app/models/prompt_config.rb:77:in 'PromptConfig.behavioral_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "safety"]]
+  ↳ app/models/prompt_config.rb:119:in 'PromptConfig.build_system_prompt'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mConversation Create (0.6ms)[0m  [1m[32mINSERT INTO "conversations" ("user_message", "ai_response", "session_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_message", "tell me 3 para story"], ["ai_response", "Hello! I'm Cally here to give you a wonderful story today. It’s about a brave man who goes on an adventure in the mountains. Here's what I mean:\n\nOnce upon a time, there was a young boy named Jack who loved playing outside in his backyard. One sunny afternoon, as he was climbing a big tree with his friends, they saw something amazing: a big bear walking down the road! It was an old storybook about a bear called Big Bear and a girl named Emma.\n\nJack and his friends were so excited to find this magical creature that they made up their own adventure for the day. They decided to follow the bear on a journey into the mountains, where they would be the first to meet Big Bear!\n\nThe next morning, as Jack was playing outside with his friends, he saw the big bear walking back up the mountain. He quickly put on his brave costume and joined his friends in the sky.\n\nThey flew high above their city, passing by many tall trees and seeing many beautiful mountains. At last, they saw Big Bear walk down the road to meet them!\n\nJack was very happy that day and couldn’t wait to tell his friends about the exciting adventure he had just had with the big bear! He told them all about how they met on a sunny afternoon in their backyard and made up an even better story.\n\nAfter the adventure, Jack's friends came back home happy to have met this magical creature. They would tell everyone stories about how brave they were that day and how much they loved playing outside together!\n\nSo next time you’re out exploring, remember that there are always new adventures waiting for you in the mountains! 🚀✨\n\nHave a great day! And I’m so glad I could help make this story more exciting! 😄✨"], ["session_id", "20250927_10"], ["timestamp", "2025-09-27 06:32:05.693658"], ["created_at", "2025-09-27 06:32:05.693913"], ["updated_at", "2025-09-27 06:32:05.693913"]]
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+Conversation logged to database: ID 36, tell me 3 para story...
+Completed 200 OK in 4320ms (Views: 0.1ms | ActiveRecord: 1.4ms | Allocations: 13344)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:32:23 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_11920'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 643)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 2180)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 2461)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:32:24 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.0ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_11920'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 2183)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 2452)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:33:22 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_11920'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 2171)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 2440)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-27 10:33:31 +0400
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-09-27 10:34:24 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_15248'
+  Rendered chat/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 5255)
+  Rendered shared/_navigation.html.erb (Duration: 0.5ms | Allocations: 571)
+  Rendered layout layouts/application.html.erb (Duration: 27.0ms | Allocations: 27786)
+Completed 200 OK in 30ms (Views: 27.5ms | ActiveRecord: 1.0ms | Allocations: 30154)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:34:25 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_15248'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 2177)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 2446)
+
+
+Started GET "/chat/history" for ::1 at 2025-09-27 10:34:25 +0400
+Processing by ChatController#history as HTML
+  [1m[36mConversation Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "conversations"[0m
+  ↳ app/controllers/chat_controller.rb:63:in 'ChatController#history'
+  Rendering layout layouts/application.html.erb
+  Rendering chat/history.html.erb within layouts/application
+  [1m[36mConversation Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/chat/history.html.erb:32:in '_app_views_chat_history_html_erb___2414987054162986480_15296'
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/chat/history.html.erb:40:in 'Enumerable#each_with_index'
+  Rendered chat/history.html.erb within layouts/application (Duration: 5.3ms | Allocations: 10123)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 11662)
+Completed 200 OK in 9ms (Views: 6.5ms | ActiveRecord: 0.7ms | Allocations: 13440)
+
+
+Started GET "/settings" for ::1 at 2025-09-27 10:34:27 +0400
+Processing by SettingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering settings/index.html.erb within layouts/application
+  [1m[36mPromptConfig Load (0.1ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "family_info"]]
+  ↳ app/views/settings/index.html.erb:26:in 'block in _app_views_settings_index_html_erb__3541948810913317671_15336'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "behavioral"]]
+  ↳ app/views/settings/index.html.erb:48:in 'block in _app_views_settings_index_html_erb__3541948810913317671_15336'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "safety"]]
+  ↳ app/views/settings/index.html.erb:97:in 'block in _app_views_settings_index_html_erb__3541948810913317671_15336'
+  [1m[36mPromptConfig Load (0.0ms)[0m  [1m[34mSELECT "prompt_configs".* FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ? ORDER BY "prompt_configs"."key" ASC[0m  [["config_type", "personalization"]]
+  ↳ app/views/settings/index.html.erb:120:in 'block in _app_views_settings_index_html_erb__3541948810913317671_15336'
+  Rendered settings/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 8046)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 135)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 9281)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 0.3ms | Allocations: 11186)
+
+
+Started GET "/chat/history" for ::1 at 2025-09-27 10:34:27 +0400
+Processing by ChatController#history as HTML
+  [1m[36mConversation Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "conversations"[0m
+  ↳ app/controllers/chat_controller.rb:63:in 'ChatController#history'
+  Rendering layout layouts/application.html.erb
+  Rendering chat/history.html.erb within layouts/application
+  [1m[36mConversation Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/chat/history.html.erb:32:in '_app_views_chat_history_html_erb___2414987054162986480_15296'
+  [1m[36mConversation Load (0.0ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/chat/history.html.erb:40:in 'Enumerable#each_with_index'
+  Rendered chat/history.html.erb within layouts/application (Duration: 4.0ms | Allocations: 6744)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 8277)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.1ms | Allocations: 8950)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:34:28 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_15248'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 638)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 2169)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms | Allocations: 2439)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-27 10:34:31 +0400
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-09-27 10:34:35 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_15248'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 2191)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 2461)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-27 10:34:35 +0400
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-09-27 10:34:36 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_15248'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 2175)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 2445)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-27 10:34:36 +0400
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-09-27 10:34:36 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_15248'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 2164)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 2434)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-27 10:34:36 +0400
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-09-27 10:34:48 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_18808'
+  Rendered chat/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 5319)
+  Rendered shared/_navigation.html.erb (Duration: 0.3ms | Allocations: 567)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 26322)
+Completed 200 OK in 10ms (Views: 7.4ms | ActiveRecord: 1.0ms | Allocations: 28677)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:34:57 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_18808'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1939)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:35:04 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_18808'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 2064)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 2335)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:35:05 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_18808'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 2032)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 2301)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:35:05 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_18808'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 2044)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 2313)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:35:05 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_18808'
+  Rendered chat/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 2038)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 2307)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:35:05 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.0ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_18808'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 2056)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 2326)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:35:06 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_18808'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 2041)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 2310)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:35:06 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_18808'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 2064)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms | Allocations: 2333)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:35:06 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_18808'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 2050)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms | Allocations: 2319)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:35:06 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_18808'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 2050)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 2319)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:35:06 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_18808'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 2032)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 2301)
+
+

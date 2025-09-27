@@ -28,12 +28,21 @@
       </div>
     </div>
     
+    <!-- Voice Debug Panel (temporary) -->
+    <div class="voice-debug" id="voiceDebug" style="background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 5px; font-size: 12px; display: none;">
+      <strong>🔊 Voice Debug Info:</strong><br>
+      <div id="debugInfo">Loading...</div>
+    </div>
+
     <!-- Active Character Indicator -->
     <div class="active-character" id="activeCharacter" style="display: none;">
       <span class="emoji" id="activeCharacterEmoji">🤖</span>
       <span id="activeCharacterName">Regular Cally</span>
       <button class="test-voice-btn" id="testVoiceBtn" title="Test this character's voice">
         🔊 Test Voice
+      </button>
+      <button class="debug-voice-btn" id="debugVoiceBtn" title="Show voice debug info">
+        🔍 Debug
       </button>
     </div>
     
@@ -160,6 +169,12 @@ class CallyChat {
     const testVoiceBtn = document.getElementById('testVoiceBtn');
     if (testVoiceBtn) {
       testVoiceBtn.addEventListener('click', () => this.testCurrentCharacterVoice());
+    }
+    
+    // Debug voice button listener
+    const debugVoiceBtn = document.getElementById('debugVoiceBtn');
+    if (debugVoiceBtn) {
+      debugVoiceBtn.addEventListener('click', () => this.toggleVoiceDebug());
     }
   }
   
@@ -362,6 +377,34 @@ class CallyChat {
       this.speakMessage('Hello! Please select a character first!');
     }
   }
+  
+  toggleVoiceDebug() {
+    const debugPanel = document.getElementById('voiceDebug');
+    if (debugPanel.style.display === 'none') {
+      this.showVoiceDebug();
+      debugPanel.style.display = 'block';
+    } else {
+      debugPanel.style.display = 'none';
+    }
+  }
+  
+  showVoiceDebug() {
+    const voices = this.synthesis.getVoices();
+    const debugInfo = document.getElementById('debugInfo');
+    
+    let debugText = `<strong>Available Voices (${voices.length}):</strong><br>`;
+    voices.forEach((voice, index) => {
+      debugText += `${index}: ${voice.name} (${voice.lang}) - ${voice.gender || 'unknown'}<br>`;
+    });
+    
+    debugText += `<br><strong>Current Character:</strong> ${this.selectedCharacter?.name || 'None'}<br>`;
+    debugText += `<strong>Voice Settings:</strong> ${JSON.stringify(this.currentVoiceSettings)}<br>`;
+    
+    const selectedVoice = this.selectVoiceByType(voices, this.currentVoiceSettings.voice || 'default');
+    debugText += `<strong>Selected Voice:</strong> ${selectedVoice?.name || 'None'}<br>`;
+    
+    debugInfo.innerHTML = debugText;
+  }
 
   speakLastMessage() {
     if (this.lastAiMessage) {
@@ -412,37 +455,48 @@ class CallyChat {
   
   selectVoiceByType(voices, voiceType) {
     console.log('🎭 Selecting voice for type:', voiceType);
+    console.log('🎭 Available voices:', voices.map(v => `${v.name} (${v.lang})`));
     
-    // Priority order for different voice types
+    // Create a more aggressive voice selection strategy
     const voiceSelectors = {
       'female': [
-        // High priority female voices
+        // Try to find voices that are clearly female
         (v) => v.name.toLowerCase().includes('samantha'),
         (v) => v.name.toLowerCase().includes('karen'),
         (v) => v.name.toLowerCase().includes('victoria'),
         (v) => v.name.toLowerCase().includes('allison'),
         (v) => v.name.toLowerCase().includes('ava'),
         (v) => v.name.toLowerCase().includes('susan'),
+        (v) => v.name.toLowerCase().includes('zira'),
+        (v) => v.name.toLowerCase().includes('hazel'),
         // Google voices
         (v) => v.name.toLowerCase().includes('google') && v.name.toLowerCase().includes('female'),
         (v) => v.name.toLowerCase().includes('google') && v.name.toLowerCase().includes('us') && v.name.toLowerCase().includes('female'),
         // Fallback to any female-sounding voice
         (v) => v.name.toLowerCase().includes('female'),
-        (v) => v.lang.includes('en') && v.name.toLowerCase().includes('woman')
+        (v) => v.lang.includes('en') && v.name.toLowerCase().includes('woman'),
+        // Try different indices for female voices (common pattern)
+        (v, index) => index % 3 === 1 && v.lang.includes('en'), // Every 3rd voice starting from 1
+        (v, index) => index % 2 === 0 && v.lang.includes('en') // Every 2nd voice starting from 0
       ],
       'male': [
-        // High priority male voices  
+        // Try to find voices that are clearly male
         (v) => v.name.toLowerCase().includes('alex'),
         (v) => v.name.toLowerCase().includes('daniel'),
         (v) => v.name.toLowerCase().includes('tom'),
         (v) => v.name.toLowerCase().includes('fred'),
         (v) => v.name.toLowerCase().includes('ralph'),
+        (v) => v.name.toLowerCase().includes('david'),
+        (v) => v.name.toLowerCase().includes('mark'),
         // Google voices
         (v) => v.name.toLowerCase().includes('google') && v.name.toLowerCase().includes('male'),
         (v) => v.name.toLowerCase().includes('google') && v.name.toLowerCase().includes('us') && v.name.toLowerCase().includes('male'),
         // Fallback to any male-sounding voice
         (v) => v.name.toLowerCase().includes('male'),
-        (v) => v.lang.includes('en') && v.name.toLowerCase().includes('man')
+        (v) => v.lang.includes('en') && v.name.toLowerCase().includes('man'),
+        // Try different indices for male voices
+        (v, index) => index % 3 === 2 && v.lang.includes('en'), // Every 3rd voice starting from 2
+        (v, index) => index % 2 === 1 && v.lang.includes('en') // Every 2nd voice starting from 1
       ],
       'default': [
         // Best quality voices first
@@ -459,17 +513,28 @@ class CallyChat {
     
     // Try each selector in priority order
     for (const selector of selectors) {
-      const voice = voices.find(selector);
+      const voice = voices.find((v, index) => selector(v, index));
       if (voice) {
         console.log(`🎯 Found voice: ${voice.name} for ${voiceType}`);
         return voice;
       }
     }
     
-    // Ultimate fallback - just pick the first English voice
+    // Ultimate fallback - just pick a different voice based on voice type
+    if (voiceType === 'female' && voices.length > 1) {
+      const femaleVoice = voices[1]; // Try second voice
+      console.log(`🔄 Female fallback voice: ${femaleVoice.name}`);
+      return femaleVoice;
+    } else if (voiceType === 'male' && voices.length > 2) {
+      const maleVoice = voices[2]; // Try third voice
+      console.log(`🔄 Male fallback voice: ${maleVoice.name}`);
+      return maleVoice;
+    }
+    
+    // Final fallback - first English voice
     const fallback = voices.find(v => v.lang.includes('en'));
     if (fallback) {
-      console.log(`🔄 Fallback voice: ${fallback.name}`);
+      console.log(`🔄 Final fallback voice: ${fallback.name}`);
       return fallback;
     }
     
