@@ -105,6 +105,44 @@
   100% { transform: scale(1); }
 }
 
+/* Active Character Indicator */
+.active-character {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  text-align: center;
+  margin: 15px auto;
+  max-width: 300px;
+  font-family: 'Comic Sans MS', cursive, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+  border: 2px solid #45a049;
+}
+
+.active-character .emoji {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.test-voice-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.test-voice-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
   .character-grid {
@@ -123,5 +161,10 @@
   
   .character-name {
     font-size: 11px;
+  }
+  
+  .active-character {
+    font-size: 14px;
+    padding: 10px 16px;
   }
 }

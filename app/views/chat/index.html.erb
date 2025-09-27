@@ -28,6 +28,15 @@
       </div>
     </div>
     
+    <!-- Active Character Indicator -->
+    <div class="active-character" id="activeCharacter" style="display: none;">
+      <span class="emoji" id="activeCharacterEmoji">🤖</span>
+      <span id="activeCharacterName">Regular Cally</span>
+      <button class="test-voice-btn" id="testVoiceBtn" title="Test this character's voice">
+        🔊 Test Voice
+      </button>
+    </div>
+    
     <div class="status" id="status"></div>
     
     <div class="input-container">
@@ -75,6 +84,10 @@ class CallyChat {
     this.synthesis = window.speechSynthesis;
     this.selectedCharacter = null;
     this.currentVoiceSettings = { rate: 1.0, pitch: 1.0, voice: 'default' };
+    this.availableVoices = [];
+    
+    // Load voices when they become available
+    this.loadVoices();
     this.lastAiMessage = '';
     
     // Generate or retrieve session ID for conversation context
@@ -96,6 +109,30 @@ class CallyChat {
     return `${year}${month}${day}_${hour}`;
   }
   
+  loadVoices() {
+    // Load voices when available
+    const loadVoicesSync = () => {
+      this.availableVoices = this.synthesis.getVoices();
+      console.log('Available voices loaded:', this.availableVoices.length);
+      
+      // Debug: Log all available voices
+      this.availableVoices.forEach((voice, index) => {
+        console.log(`Voice ${index}: ${voice.name} (${voice.lang}) - ${voice.gender || 'unknown gender'}`);
+      });
+    };
+    
+    // Voices might not be loaded immediately
+    if (this.synthesis.getVoices().length > 0) {
+      loadVoicesSync();
+    } else {
+      // Wait for voices to load
+      this.synthesis.onvoiceschanged = loadVoicesSync;
+      
+      // Fallback timeout
+      setTimeout(loadVoicesSync, 1000);
+    }
+  }
+  
   initializeEventListeners() {
     this.sendButton.addEventListener('click', () => this.sendMessage());
     this.chatInput.addEventListener('keypress', (e) => {
@@ -111,6 +148,12 @@ class CallyChat {
     document.querySelectorAll('.character-btn').forEach(btn => {
       btn.addEventListener('click', (e) => this.selectCharacter(e.target.closest('.character-btn')));
     });
+    
+    // Test voice button listener
+    const testVoiceBtn = document.getElementById('testVoiceBtn');
+    if (testVoiceBtn) {
+      testVoiceBtn.addEventListener('click', () => this.testCurrentCharacterVoice());
+    }
   }
   
   initializeSpeechRecognition() {
@@ -237,16 +280,61 @@ class CallyChat {
     
     // Update voice settings immediately
     this.currentVoiceSettings = this.selectedCharacter.voiceSettings;
+    console.log('🎭 Character selected:', this.selectedCharacter.name);
+    console.log('🔊 Voice settings updated:', this.currentVoiceSettings);
     
     // Show confirmation message
     const characterName = this.selectedCharacter.name;
     const emoji = characterBtn.querySelector('.character-emoji').textContent;
-    this.setStatus(`${emoji} Now talking to ${characterName}!`, 'character-selected');
     
-    // Clear status after 2 seconds
+    // Update active character indicator
+    const activeCharacter = document.getElementById('activeCharacter');
+    const activeEmoji = document.getElementById('activeCharacterEmoji');
+    const activeName = document.getElementById('activeCharacterName');
+    
+    if (activeCharacter && activeEmoji && activeName) {
+      activeEmoji.textContent = emoji;
+      activeName.textContent = characterName;
+      activeCharacter.style.display = 'block';
+    }
+    
+    // Test the voice immediately with a sample message
+    const testMessage = this.getCharacterTestMessage(characterName);
+    this.setStatus(`${emoji} Now talking to ${characterName}! Listen...`, 'character-selected');
+    
+    // Speak the test message to demonstrate voice change
+    setTimeout(() => {
+      this.speakMessage(testMessage);
+    }, 500);
+    
+    // Clear status after voice test
     setTimeout(() => {
       this.setStatus('', '');
-    }, 2000);
+    }, 4000);
+  }
+  
+  getCharacterTestMessage(characterName) {
+    const testMessages = {
+      'Regular Cally': 'Hi! I\'m your friendly helper Cally!',
+      'Pirate Cally': 'Ahoy matey! Ready for adventure on the high seas?',
+      'Princess Cally': 'Greetings, dear friend! Welcome to my magical kingdom!',
+      'Robot Cally': 'Computing... Hello human! Fascinating data detected!',
+      'Animal Expert Cally': 'Wow! Amazing creatures await us in nature!',
+      'Space Explorer Cally': 'Stellar greetings, space cadet! Ready to blast off?',
+      'Chef Cally': 'Hello there! Let\'s cook up something delicious together!',
+      'Superhero Cally': 'Super greetings! Your amazing powers are ready for hero training!'
+    };
+    
+    return testMessages[characterName] || 'Hello! I\'m your new character friend!';
+  }
+  
+  testCurrentCharacterVoice() {
+    if (this.selectedCharacter) {
+      const testMessage = this.getCharacterTestMessage(this.selectedCharacter.name);
+      this.speakMessage(testMessage);
+    } else {
+      this.speakMessage('Hello! Please select a character first!');
+    }
   }
 
   speakLastMessage() {
@@ -265,39 +353,21 @@ class CallyChat {
       // Apply character voice settings
       utterance.rate = this.currentVoiceSettings.rate || 1.0;
       utterance.pitch = this.currentVoiceSettings.pitch || 1.0;
-      utterance.volume = 0.8;
+      utterance.volume = 0.9;
       
-      // Get available voices
+      // Get fresh voices (important for voice changes)
       const voices = this.synthesis.getVoices();
+      console.log('🔊 Current character voice settings:', this.currentVoiceSettings);
+      console.log('🔊 Total available voices:', voices.length);
       
-      // Select voice based on character settings
-      let selectedVoice = null;
-      const voiceType = this.currentVoiceSettings.voice || 'default';
-      
-      if (voiceType === 'female') {
-        selectedVoice = voices.find(voice => 
-          voice.name.includes('Samantha') || 
-          voice.name.includes('Karen') || 
-          voice.name.includes('Google') && voice.name.includes('female') ||
-          voice.name.includes('US English Female')
-        );
-      } else if (voiceType === 'male') {
-        selectedVoice = voices.find(voice => 
-          voice.name.includes('Alex') || 
-          voice.name.includes('Google') && voice.name.includes('male') ||
-          voice.name.includes('US English Male')
-        );
-      } else {
-        // Default voice selection
-        selectedVoice = voices.find(voice => 
-          voice.name.includes('Google') && voice.lang.includes('en') ||
-          voice.name.includes('Alex') ||
-          voice.name.includes('Samantha')
-        );
-      }
+      // Enhanced voice selection with multiple fallbacks
+      let selectedVoice = this.selectVoiceByType(voices, this.currentVoiceSettings.voice || 'default');
       
       if (selectedVoice) {
         utterance.voice = selectedVoice;
+        console.log('🔊 Selected voice:', selectedVoice.name, 'for', this.currentVoiceSettings.voice);
+      } else {
+        console.log('🔊 Using default system voice');
       }
       
       utterance.onstart = () => {
@@ -312,6 +382,73 @@ class CallyChat {
       
       this.synthesis.speak(utterance);
     }
+  }
+  
+  selectVoiceByType(voices, voiceType) {
+    console.log('🎭 Selecting voice for type:', voiceType);
+    
+    // Priority order for different voice types
+    const voiceSelectors = {
+      'female': [
+        // High priority female voices
+        (v) => v.name.toLowerCase().includes('samantha'),
+        (v) => v.name.toLowerCase().includes('karen'),
+        (v) => v.name.toLowerCase().includes('victoria'),
+        (v) => v.name.toLowerCase().includes('allison'),
+        (v) => v.name.toLowerCase().includes('ava'),
+        (v) => v.name.toLowerCase().includes('susan'),
+        // Google voices
+        (v) => v.name.toLowerCase().includes('google') && v.name.toLowerCase().includes('female'),
+        (v) => v.name.toLowerCase().includes('google') && v.name.toLowerCase().includes('us') && v.name.toLowerCase().includes('female'),
+        // Fallback to any female-sounding voice
+        (v) => v.name.toLowerCase().includes('female'),
+        (v) => v.lang.includes('en') && v.name.toLowerCase().includes('woman')
+      ],
+      'male': [
+        // High priority male voices  
+        (v) => v.name.toLowerCase().includes('alex'),
+        (v) => v.name.toLowerCase().includes('daniel'),
+        (v) => v.name.toLowerCase().includes('tom'),
+        (v) => v.name.toLowerCase().includes('fred'),
+        (v) => v.name.toLowerCase().includes('ralph'),
+        // Google voices
+        (v) => v.name.toLowerCase().includes('google') && v.name.toLowerCase().includes('male'),
+        (v) => v.name.toLowerCase().includes('google') && v.name.toLowerCase().includes('us') && v.name.toLowerCase().includes('male'),
+        // Fallback to any male-sounding voice
+        (v) => v.name.toLowerCase().includes('male'),
+        (v) => v.lang.includes('en') && v.name.toLowerCase().includes('man')
+      ],
+      'default': [
+        // Best quality voices first
+        (v) => v.name.toLowerCase().includes('google') && v.lang.includes('en-us'),
+        (v) => v.name.toLowerCase().includes('alex'),
+        (v) => v.name.toLowerCase().includes('samantha'),
+        (v) => v.name.toLowerCase().includes('google'),
+        (v) => v.lang.includes('en-us'),
+        (v) => v.lang.includes('en')
+      ]
+    };
+    
+    const selectors = voiceSelectors[voiceType] || voiceSelectors['default'];
+    
+    // Try each selector in priority order
+    for (const selector of selectors) {
+      const voice = voices.find(selector);
+      if (voice) {
+        console.log(`🎯 Found voice: ${voice.name} for ${voiceType}`);
+        return voice;
+      }
+    }
+    
+    // Ultimate fallback - just pick the first English voice
+    const fallback = voices.find(v => v.lang.includes('en'));
+    if (fallback) {
+      console.log(`🔄 Fallback voice: ${fallback.name}`);
+      return fallback;
+    }
+    
+    console.log('⚠️ No suitable voice found, using system default');
+    return null;
   }
   
   setStatus(message, className) {

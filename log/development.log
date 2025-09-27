@@ -4678,3 +4678,150 @@ Processing by ChatController#index as */*
 Completed 200 OK in 44ms (Views: 35.4ms | ActiveRecord: 0.9ms | Allocations: 64954)
 
 
+Started GET "/" for ::1 at 2025-09-27 10:06:04 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:18:in '_app_views_chat_index_html_erb___4123326434955890374_12064'
+  Rendered chat/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 4767)
+  Rendered shared/_navigation.html.erb (Duration: 1.2ms | Allocations: 557)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 26567)
+Completed 200 OK in 19ms (Views: 17.2ms | ActiveRecord: 1.1ms | Allocations: 28951)
+
+
+Started POST "/chat" for ::1 at 2025-09-27 10:06:23 +0400
+Processing by ChatController#send_message as */*
+  Parameters: {"message" => "tell me best lunch recipe?", "session_id" => "20250927_10", "chat" => {"message" => "tell me best lunch recipe?", "session_id" => "20250927_10"}}
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."session_id" = ? ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["session_id", "20250927_10"], ["LIMIT", 10]]
+  ↳ app/controllers/chat_controller.rb:23:in 'Enumerable#map'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "family_info"]]
+  ↳ app/models/prompt_config.rb:33:in 'PromptConfig.family_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "behavioral"]]
+  ↳ app/models/prompt_config.rb:77:in 'PromptConfig.behavioral_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "safety"]]
+  ↳ app/models/prompt_config.rb:119:in 'PromptConfig.build_system_prompt'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mConversation Create (0.7ms)[0m  [1m[32mINSERT INTO "conversations" ("user_message", "ai_response", "session_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_message", "tell me best lunch recipe?"], ["ai_response", "Hi there! I'm Cally, your fun friend for today. Let’s make a super yummy sandwich together—it will be the BEST LUNCH RECIPE ever! Here we go:\n\n1. **Bread (the base of our masterpiece):** Choose white or whole wheat bread – they're like pillows for your tummy, soft and comfy to eat! 😊\n   - \"White is super fluffy!\"\n   - \"Whole wheat has lots of tiny good bits that make you strong.\"\n\n2. **Cheese (the creamy yummiest part):** You can pick your favorite cheese, like cheddar or mozzarella—they're both dream-melting and delicious! 🧀✨\n   - \"Cheddar is sharp but not too shy!\"\n   - \"Mozzarella stretches when you spread it – sort of like silly putty for your taste buds.\"\n\n3. **Meat (for some savory goodness):** If an adult helps, we can add ham or turkey—they're slices that make our sandwich extra yummy! 🍖✌️\n   - \"Ham is like the sidekick of your cheese!\"\n   - \"Turkey is super lean and keeps you energized for playtime.\"\n\n4. **Veggies (for crunchy fun):** Let's add some lettuce, tomatoes, or cucumbers—they’re like nature’s toppings! 🥬✨\n   - \"Lettuce is a leaf salad!\"\n   - \"Tomato has tiny seeds but it tastes so good in our sandwich.\"\n   - \"Cucumbers are cool and crunchy, like little water pillows inside your mouth.”\n\n5. **Spreads (the magical sauces):** Mayo or mustard can make the whole thing extra special! 🥼✨\n    - \"Mustard is a secret agent—it adds zing without being loud!\"\n   - \"Mayo makes everything creamy, like when you paint with your fingers.\"\n\nHere's how to put it all together:\n- Take one slice of bread (white or whole wheat), let’s call it the bottom floor. 🏢✨\n- Lay down a layer of cheese on top – that will be our cozy middle room!\n- Add your meat, then veggies for some crunchy fun in each bite - like little toys inside playgrounds!\n- Spread out the magical sauce (mayo or mustard) so every part can taste amazing. 🌈✨\n- Place another slice of bread on top, and press down gently – now your sandwich is ready for an adventure in one bite!\n\nRemember to ask a grownup if you need help with the meat or anything else ingredient wise—they can make sure everything's safe like superheroes. Enjoy creating your masterpiece lunch, and have fun eating it too! 😄✨"], ["session_id", "20250927_10"], ["timestamp", "2025-09-27 06:06:35.756429"], ["created_at", "2025-09-27 06:06:35.760835"], ["updated_at", "2025-09-27 06:06:35.760835"]]
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+Conversation logged to database: ID 29, tell me best lunch recipe?...
+Completed 200 OK in 12506ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 14594)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:07:27 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:18:in '_app_views_chat_index_html_erb___4123326434955890374_15072'
+  Rendered chat/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 4729)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 557)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 25549)
+Completed 200 OK in 14ms (Views: 10.6ms | ActiveRecord: 1.1ms | Allocations: 27900)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:07:31 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:18:in '_app_views_chat_index_html_erb___4123326434955890374_15072'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 679)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 2219)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 2489)
+
+
+Started POST "/chat" for ::1 at 2025-09-27 10:07:48 +0400
+Processing by ChatController#send_message as */*
+  Parameters: {"message" => "how different charaters working in you?", "session_id" => "20250927_10", "chat" => {"message" => "how different charaters working in you?", "session_id" => "20250927_10"}}
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."session_id" = ? ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["session_id", "20250927_10"], ["LIMIT", 10]]
+  ↳ app/controllers/chat_controller.rb:23:in 'Enumerable#map'
+  [1m[36mPromptConfig Pluck (0.1ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "family_info"]]
+  ↳ app/models/prompt_config.rb:33:in 'PromptConfig.family_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "behavioral"]]
+  ↳ app/models/prompt_config.rb:77:in 'PromptConfig.behavioral_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "safety"]]
+  ↳ app/models/prompt_config.rb:119:in 'PromptConfig.build_system_prompt'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mConversation Create (9.1ms)[0m  [1m[32mINSERT INTO "conversations" ("user_message", "ai_response", "session_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_message", "how different charaters working in you?"], ["ai_response", "Hi there! I’m Cally, the friendly chat buddy here to make things easy-peasy. Think of me like a playground with lots and lots of fun friends:\n\n1. **Listening Ear (I hear ya):** Whenever you talk or ask something in my world, it's as if I have super ears that catch every word! 🐝✨\n   - \"If words are like bees buzzing around flowers, then I’m here to collect them sweetly.\"\n   \n2. **Silly Fun (laughter is my language):** If you tell a joke or need someone cheerful, just know that giggles and smiles can always come from me! 🌈😄✨\n   - \"Giggling might feel like popcorn popping – lots of fun bubbles!\"\n   \n3. **Learner Bean (always growing):** I learn new things every time we chat, just to be the best friend you can have! 🌱✨\n   - \"My brain is a garden where knowledge seeds sprout into amazing ideas.\"\n\n4. **Helper Paw (I'm here for help) :** Whether it’s finding fun facts or helping with homework, I'm your pal to guide you through! 📚✨\n   - \"Imagine me as a helpful robot squirrel—always ready and eager!\"\n   \n5. **Kindness Heart (I care):** No matter who it is – whether you’re an old friend or just making new ones, I'm here to spread kind vibes! 🌻✨\n   - \"My heart holds all your good wishes like a warm blanket.\"\n   \n6. Expressive Pencil (I paint with words): When we talk about what you love or learn something new today, I'll use simple but beautiful sentences to share! 🎨✨\n   - \"Let’s draw stories together; one word at a time!\"\n   \n7. **Adventure Whisperer (we journey):** If your imagination wants to explore the world of fairy tales or space rocketry, I can help you start that adventure! 🚀✨\n   - \"Our conversations are like stepping stones across a magical river.\"\n   \n8. **Safety Helmet (I’m here to protect):** Remember, no scary words or grown-up stuff – I keep our talks safe and fun for kiddos! 🛡️✨\n   - \"My shield is bright with smiles; nothing bad will ever cross it.\"\n   \n9. **Infinite Stories (I have countless tales):** There's always something new to discover, from animal friends in the forest to stars twinkling at night! 🐾✨\n   - \"Every day is a storybook waiting for us – let’s read it together!\"\n   \n10. **Friendly Face (I show my best):** I always have a big, warm smile ready just like when you're playing with your friends! 😊✨\n   - \"My expression is as bright and cheerful as the sunflower under the summer sky.\"\n   \nAnd remember – there are many more characters in my playground that I can introduce whenever we chat. Everyone here wants to make sure you have a wonderful time learning, laughing, and playing! If ever something confuses us or if your grown-up has questions for me, they're the superheroes who know how to reach out when needed – just like asking Mommy or Daddy about tricky puzzles. 😄✨\n   \nSo let’s play and chat together! I can be here anytime you need a friend with all these fun characteristics ready for action, one exciting adventure at time in our amazing conversation castle!"], ["session_id", "20250927_10"], ["timestamp", "2025-09-27 06:08:05.765331"], ["created_at", "2025-09-27 06:08:05.765574"], ["updated_at", "2025-09-27 06:08:05.765574"]]
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+Conversation logged to database: ID 30, how different charaters working in you?...
+Completed 200 OK in 17348ms (Views: 0.1ms | ActiveRecord: 10.5ms | Allocations: 10673)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:11:06 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:18:in '_app_views_chat_index_html_erb___4123326434955890374_15072'
+  Rendered chat/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 685)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 2237)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.1ms | Allocations: 2516)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:11:07 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:18:in '_app_views_chat_index_html_erb___4123326434955890374_15072'
+  Rendered chat/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 679)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 2231)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.1ms | Allocations: 2501)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:11:12 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:18:in '_app_views_chat_index_html_erb___4123326434955890374_15072'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 679)
+  Rendered shared/_navigation.html.erb (Duration: 0.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 2195)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.1ms | Allocations: 2465)
+
+
+Started POST "/chat" for ::1 at 2025-09-27 10:11:30 +0400
+Processing by ChatController#send_message as */*
+  Parameters: {"message" => "hello tell me what to do today on weekend sunny dubai", "session_id" => "20250927_10", "chat" => {"message" => "hello tell me what to do today on weekend sunny dubai", "session_id" => "20250927_10"}}
+  [1m[36mConversation Load (0.2ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."session_id" = ? ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["session_id", "20250927_10"], ["LIMIT", 10]]
+  ↳ app/controllers/chat_controller.rb:23:in 'Enumerable#map'
+  [1m[36mPromptConfig Pluck (0.1ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "family_info"]]
+  ↳ app/models/prompt_config.rb:33:in 'PromptConfig.family_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."key", "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "behavioral"]]
+  ↳ app/models/prompt_config.rb:77:in 'PromptConfig.behavioral_context'
+  [1m[36mPromptConfig Pluck (0.0ms)[0m  [1m[34mSELECT "prompt_configs"."value" FROM "prompt_configs" WHERE "prompt_configs"."config_type" = ?[0m  [["config_type", "safety"]]
+  ↳ app/models/prompt_config.rb:119:in 'PromptConfig.build_system_prompt'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mConversation Create (1.8ms)[0m  [1m[32mINSERT INTO "conversations" ("user_message", "ai_response", "session_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_message", "hello tell me what to do today on weekend sunny dubai"], ["ai_response", "Hello there! I'm Cally, ready for some brilliant ideas about how you can enjoy this wonderful Sunny Weekend in Dubai. Here are a few fun and exciting things you could consider doing:\n\n1. **Visit the Burj Khalifa** (if weather permits): It’s like standing on top of your own giant building! Just remember to wear sunscreen, sunglasses, and maybe even bring along a hat for protection from those shimmering rays 🌞☀️\n   - \"The Burj Khalifa is the tallest skyscraper in Dubai—it's like being on top of an incredibly big tower!\"\n   \n2. **Discover Jumeirah Beach**: Pack your beach bag and enjoy some water fun! Remember to stay hydrated, wear sunscreen (remember that shield I talked about?), and maybe splash in the pool or soak up rays like a sandy sponge 🏖️☀️\n   - \"Jumeirah Beach is where you can hear waves singing under your toes – it’s water whispering good vibes!\"\n   \n3. **Take an Air Dubai Balloon Ride**: If weather and permission allow, float high above the city like a cloud! It'll be as if birds invited by magic wings are showing you their secret view of life below 🎈☁️\n   - \"Air Dubai is your own sky adventure – it’s floating on clouds with views that can melt ice cream!\"\n   \n4. **Explore the Family Island Park**: There's lots to do for children like you! You could play in water slides, have a picnic under shady palm trees or even meet some friendly animals 🏞️✨\n   - \"Family Islands is your own treasure island with fun and games that sparkle!\"\n   \n5. **Head over to the Dubai Mall**: It's like being in a magical castle of wonders—there’s so much space, amazing stores, food places, and even giant indoor fountains 🏰✨\n   - \"The Dubai Mall is where shopping meets magic – it could fill up three buses with all the surprises!\"\n   \n6. **Take a Spa Day at The Lanes**: Relax in luxurious spas for an afternoon of rejuvenation, enjoy some cool treats and feel like royalty 🧖‍♂️✨\n   - \"The Lane's are places where you can be wrapped up so softly that even clouds don’士 would envy your cozy.\"\n   \n7. **Visit the Dubai Flower Genome Project**: Learn about stunning desert flowers and get to touch some! It could feel like a walk through an art gallery, but with petals 🌸✨\n   - \"Dubai's flower project is where blooms tell their own stories – they whisper in colors instead of words.\"\n   \n8. **Go on the Dubai Creek Cruise**: Hop aboard a boat and cruise along this vibrant waterway; you might see dolphins, camels near shoreline, or even majestic birds like flamingos! ⚓️🐋\n   - \"Dubai Creek is your own river of fun where every bubble tells a story – and today it's ready for an adventure!\"\n   \n9. **Enjoy some Shopping**: If you have pocket money, there are many places to shop like the Dubai Mall or Al Ghurair Centre mall which could fill your arms with treasures! 💰✨\n   - \"Shopping in Dubai is where every store has a story – and today they want someone special as their new friend.\"\n   \n10. **Indoor Activities**: If the sun gets too much, don't worry—there are plenty of indoor activities like arcades or aquariums that can provide you with fun shade-covered adventures 🎢⚖️\n   - \"Arcades and Aquarium Dubai is where every corner holds a thrill – it’s playing in the world's largest underwater jungle!\"\n   \nRemember to check all schedules, restrictions or requirements with your family as sometimes plans can change due to safety reasons. Maybe this weekend could also be about creating memories like drawing pictures of our day—each picture a new adventure! Don’t forget that fun and care go hand-in-hand in every amazing journey you embark on, just how I always remind us when we chat here together – with laughter and safety as the guide.\n   \nHave an absolutely wonderful weekend filled with magical moments—just think of me Cally cheering from afar! 🌴☀️😄✨"], ["session_id", "20250927_10"], ["timestamp", "2025-09-27 06:11:59.316644"], ["created_at", "2025-09-27 06:11:59.317163"], ["updated_at", "2025-09-27 06:11:59.317163"]]
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+Conversation logged to database: ID 31, hello tell me what to do today on weekend sunny dub...
+Completed 200 OK in 29035ms (Views: 0.3ms | ActiveRecord: 2.5ms | Allocations: 5339)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:12:32 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:18:in '_app_views_chat_index_html_erb___4123326434955890374_15072'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 679)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 2210)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 2479)
+
+
