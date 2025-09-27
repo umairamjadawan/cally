@@ -17,7 +17,7 @@
             <option value="<%= character.id %>" 
                     data-character-name="<%= character.name %>"
                     data-character-emoji="<%= character.emoji %>"
-                    data-voice-settings="<%= character.voice_settings.html_safe %>">
+                    data-voice-settings="<%= character.voice_settings %>">
               <%= character.emoji %> <%= character.name %>
             </option>
           <% end %>
@@ -310,11 +310,22 @@ class CallyChat {
     }
     
     // Store selected character info
+    let voiceSettings = {};
+    try {
+      const voiceSettingsStr = selectedOption.dataset.voiceSettings || '{}';
+      console.log('🔍 Raw voice settings string:', voiceSettingsStr);
+      voiceSettings = JSON.parse(voiceSettingsStr);
+    } catch (error) {
+      console.error('❌ JSON parse error for voice_settings:', error);
+      console.log('🔍 Problematic string:', selectedOption.dataset.voiceSettings);
+      voiceSettings = { rate: 1.0, pitch: 1.0, voice: 'default' }; // Fallback
+    }
+    
     this.selectedCharacter = {
       id: selectedOption.value,
       name: selectedOption.dataset.characterName,
       emoji: selectedOption.dataset.characterEmoji,
-      voiceSettings: JSON.parse(selectedOption.dataset.voiceSettings || '{}')
+      voiceSettings: voiceSettings
     };
     
     // Update voice settings immediately
