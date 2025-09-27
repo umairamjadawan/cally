@@ -312,8 +312,13 @@ class CallyChat {
     // Store selected character info
     let voiceSettings = {};
     try {
-      const voiceSettingsStr = selectedOption.dataset.voiceSettings || '{}';
+      let voiceSettingsStr = selectedOption.dataset.voiceSettings || '{}';
       console.log('🔍 Raw voice settings string:', voiceSettingsStr);
+      
+      // Fix HTML encoding issues
+      voiceSettingsStr = voiceSettingsStr.replace(/&quot;/g, '"');
+      console.log('🔍 Decoded voice settings string:', voiceSettingsStr);
+      
       voiceSettings = JSON.parse(voiceSettingsStr);
     } catch (error) {
       console.error('❌ JSON parse error for voice_settings:', error);

@@ -5571,3 +5571,51 @@ Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-
   
 ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
   
+Started GET "/" for ::1 at 2025-09-27 10:38:58 +0400
+Processing by ChatController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_34368'
+  Rendered chat/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 5349)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 557)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 26086)
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 1.1ms | Allocations: 28517)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-27 10:39:14 +0400
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-09-27 10:39:15 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_37472'
+  Rendered chat/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 5359)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 557)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 26209)
+Completed 200 OK in 15ms (Views: 9.0ms | ActiveRecord: 4.6ms | Allocations: 28531)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-27 10:39:15 +0400
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-09-27 10:39:16 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_37472'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 2070)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.1ms | Allocations: 2340)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-27 10:39:16 +0400
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
