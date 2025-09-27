@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cally Icon Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f0f0f0; }
+        .icon-container { display: inline-block; margin: 10px; text-align: center; }
+        canvas { border: 2px solid #ddd; border-radius: 8px; background: white; }
+        .download-btn { margin-top: 5px; padding: 5px 10px; background: #667eea; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .download-btn:hover { background: #5a6fd8; }
+        .instructions { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h1>🎨 Cally PWA Icon Generator</h1>
+        <p>Right-click each icon below and "Save image as..." to create your PWA icons:</p>
+        <p><strong>Save them as:</strong></p>
+        <ul>
+            <li>icon-72x72.png</li>
+            <li>icon-96x96.png</li>
+            <li>icon-128x128.png</li>
+            <li>icon-144x144.png</li>
+            <li>icon-152x152.png</li>
+            <li>icon-192x192.png</li>
+            <li>icon-384x384.png</li>
+            <li>icon-512x512.png</li>
+        </ul>
+        <p>Save all files to: <code>public/icons/</code></p>
+    </div>
+
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+        
+        sizes.forEach(size => {
+            const container = document.createElement('div');
+            container.className = 'icon-container';
+            
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            
+            // Fill background with rounded corners
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.roundRect(0, 0, size, size, size * 0.15);
+            ctx.fill();
+            
+            // Add robot emoji
+            ctx.font = `${size * 0.5}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = 'white';
+            ctx.fillText('🤖', size/2, size/2 - size * 0.1);
+            
+            // Add "CALLY" text for larger icons
+            if (size >= 128) {
+                ctx.font = `${size * 0.08}px Arial`;
+                ctx.fontWeight = 'bold';
+                ctx.fillText('CALLY', size/2, size/2 + size * 0.2);
+            }
+            
+            container.appendChild(canvas);
+            
+            const label = document.createElement('div');
+            label.textContent = `${size}x${size}`;
+            container.appendChild(label);
+            
+            const downloadBtn = document.createElement('button');
+            downloadBtn.className = 'download-btn';
+            downloadBtn.textContent = 'Download';
+            downloadBtn.onclick = () => {
+                const link = document.createElement('a');
+                link.download = `icon-${size}x${size}.png`;
+                link.href = canvas.toDataURL();
+                link.click();
+            };
+            container.appendChild(downloadBtn);
+            
+            document.body.appendChild(container);
+        });
+    </script>
+</body>
+</html>

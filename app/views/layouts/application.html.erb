@@ -6,6 +6,30 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- PWA Meta Tags -->
+    <meta name="application-name" content="Cally">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Cally">
+    <meta name="description" content="Your friendly AI helper with fun characters for kids">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="msapplication-TileColor" content="#667eea">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="theme-color" content="#667eea">
+
+    <!-- PWA Icons -->
+    <link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/icons/cally-icon.svg" color="#667eea">
+    <link rel="shortcut icon" href="/favicon.ico">
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
@@ -684,5 +708,90 @@
     <%= render 'shared/navigation' %>
     <%= yield %>
     <%= yield :javascript %>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+              console.log('✅ Cally PWA: Service Worker registered successfully');
+              
+              // Check for updates
+              registration.addEventListener('updatefound', function() {
+                const newWorker = registration.installing;
+                newWorker.addEventListener('statechange', function() {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    console.log('🔄 Cally PWA: New version available!');
+                    // You can show a notification to the user here
+                  }
+                });
+              });
+            })
+            .catch(function(error) {
+              console.log('❌ Cally PWA: Service Worker registration failed:', error);
+            });
+        });
+      }
+
+      // Handle PWA install prompt
+      let deferredPrompt;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('📱 Cally PWA: Install prompt available');
+        e.preventDefault();
+        deferredPrompt = e;
+        
+        // Show install button or notification
+        // You can customize this to show a custom install button
+        const installButton = document.createElement('button');
+        installButton.textContent = '📱 Install Cally App';
+        installButton.style.cssText = `
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border: none;
+          padding: 12px 20px;
+          border-radius: 25px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+          z-index: 1000;
+          transition: all 0.3s ease;
+        `;
+        
+        installButton.addEventListener('click', async () => {
+          if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`📱 Cally PWA: Install ${outcome}`);
+            deferredPrompt = null;
+            installButton.remove();
+          }
+        });
+        
+        // Only show install button on mobile/tablet
+        if (window.innerWidth <= 1024) {
+          document.body.appendChild(installButton);
+          
+          // Auto-hide after 10 seconds
+          setTimeout(() => {
+            if (installButton.parentNode) {
+              installButton.remove();
+            }
+          }, 10000);
+        }
+      });
+
+      // Track PWA installation
+      window.addEventListener('appinstalled', () => {
+        console.log('🎉 Cally PWA: App installed successfully!');
+        // Remove any install buttons
+        const installButtons = document.querySelectorAll('button[data-pwa-install]');
+        installButtons.forEach(btn => btn.remove());
+      });
+    </script>
   </body>
 </html>
