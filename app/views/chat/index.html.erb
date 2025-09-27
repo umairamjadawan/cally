@@ -8,11 +8,14 @@
       </div>
     </div>
     
-    <!-- Character Selection Dropdown -->
-    <div class="character-dropdown-container" id="characterSelection">
-      <div class="character-dropdown">
-        <select id="characterSelect" class="character-select">
-          <option value="">🤖 Choose Your Cally...</option>
+    <div class="status" id="status"></div>
+    
+    <!-- Compact Character Selection Row -->
+    <div class="character-row" id="characterSelection">
+      <div class="character-compact">
+        <label for="characterSelect" class="character-label">🎭 Character:</label>
+        <select id="characterSelect" class="character-select-compact">
+          <option value="">Choose Cally...</option>
           <% @characters.each do |character| %>
             <option value="<%= character.id %>" 
                     data-character-name="<%= character.name %>"
@@ -22,14 +25,11 @@
             </option>
           <% end %>
         </select>
-        <button class="speaker-btn" id="characterSpeakerBtn" title="Test character voice" disabled>
+        <button class="btn btn-compact" id="characterSpeakerBtn" title="Test character voice" disabled>
           🔊
         </button>
       </div>
     </div>
-
-    
-    <div class="status" id="status"></div>
     
     <div class="input-container">
       <button class="btn btn-voice" id="micButton" title="Click to speak">
