@@ -328,19 +328,9 @@ class CallyChat {
       activeCharacter.style.display = 'block';
     }
     
-    // Test the voice immediately with a sample message
-    const testMessage = this.getCharacterTestMessage(this.selectedCharacter.name);
-    this.setStatus(`${this.selectedCharacter.emoji} Now talking to ${this.selectedCharacter.name}! Listen...`, 'character-selected');
-    
-    // Speak the test message to demonstrate voice change
-    setTimeout(() => {
-      this.speakMessage(testMessage);
-    }, 500);
-    
-    // Clear status after voice test
-    setTimeout(() => {
-      this.setStatus('', '');
-    }, 4000);
+    // Show character selection confirmation
+    this.setStatus(`${this.selectedCharacter.emoji} Now talking to ${this.selectedCharacter.name}!`, 'character-selected');
+    setTimeout(() => this.setStatus('', ''), 2000);
   }
   
   getCharacterTestMessage(characterName) {

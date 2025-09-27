@@ -5650,3 +5650,27 @@ Conversation logged to database: ID 37, can you tell me something good to eat in
 Completed 200 OK in 5432ms (Views: 0.1ms | ActiveRecord: 2.2ms | Allocations: 14009)
 
 
+Started GET "/" for ::1 at 2025-09-27 10:42:49 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_46680'
+  Rendered chat/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 5164)
+  Rendered shared/_navigation.html.erb (Duration: 1.0ms | Allocations: 557)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 27602)
+Completed 200 OK in 19ms (Views: 16.5ms | ActiveRecord: 1.0ms | Allocations: 29957)
+
+
+Started GET "/" for ::1 at 2025-09-27 10:42:50 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_46680'
+  Rendered chat/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 637)
+  Rendered shared/_navigation.html.erb (Duration: 0.1ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 2159)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 2428)
+
+
