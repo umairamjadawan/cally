@@ -5619,3 +5619,34 @@ Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-
   
 ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
   
+Started GET "/" for ::1 at 2025-09-27 10:40:34 +0400
+Processing by ChatController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering chat/index.html.erb within layouts/application
+  [1m[36mCharacter Load (0.1ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? ORDER BY "characters"."name" ASC[0m  [["active", 1]]
+  ↳ app/views/chat/index.html.erb:16:in '_app_views_chat_index_html_erb___61006710209493213_40720'
+  Rendered chat/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 5350)
+  Rendered shared/_navigation.html.erb (Duration: 0.4ms | Allocations: 559)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 26321)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 0.9ms | Allocations: 28677)
+
+
+Started POST "/chat" for ::1 at 2025-09-27 10:41:36 +0400
+Processing by ChatController#send_message as */*
+  Parameters: {"message" => "can you tell me something good to eat in the breakfast which is very less calories", "session_id" => "20250927_10", "character_id" => "8", "chat" => {"message" => "can you tell me something good to eat in the breakfast which is very less calories", "session_id" => "20250927_10", "character_id" => "8"}}
+  [1m[36mConversation Load (0.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."session_id" = ? ORDER BY "conversations"."created_at" DESC LIMIT ?[0m  [["session_id", "20250927_10"], ["LIMIT", 10]]
+  ↳ app/controllers/chat_controller.rb:23:in 'Enumerable#map'
+  [1m[36mCharacter Load (0.0ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? AND "characters"."id" = ? LIMIT ?[0m  [["active", 1], ["id", 8], ["LIMIT", 1]]
+  ↳ app/services/ollama_service.rb:53:in 'OllamaService#chat'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mConversation Create (0.4ms)[0m  [1m[32mINSERT INTO "conversations" ("user_message", "ai_response", "session_id", "timestamp", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_message", "can you tell me something good to eat in the breakfast which is very less calories"], ["ai_response", "Absolutely! For a balanced and healthy breakfast, I suggest making an oatmeal box with some of your favorite ingredients. This will provide a great combination of nutrients without the added sugars and fat:\n\n1. **Oatmeal (good source of fiber):** A good example of what’s good for you is whole wheat or rolled oats – they're like the base of your cereal boxes.\n\n2. **Mixed fruit (like apples, bananas, berries):** Choose a variety with some tart fruits like pears or apricots to keep your meals colorful and full of vitamins and antioxidants.\n\n3. **A bit of chia seeds:** These are tiny seeds that can add fiber and omega-3 fatty acids into your breakfast bowl.\n\n4. **A touch of honey (sugar-free if needed):** A small amount like a teaspoon helps in balancing the sweetness of your oatmeal without using any added sugars.\n\n5. **Some fresh berries:** These not only add flavor but also good for you as they contain antioxidants and fiber to keep you feeling full and energized.\n\nHere’s an easy recipe:\n\n- **Oatmeal:**\n  - 1 cup rolled oats\n  - 2 cups water or milk (adjust to your liking)\n  - 1 tbsp chia seeds\n  - 1/2 tsp vanilla extract\n\n- **Mixed fruit:** Add a spoonful of the mixed fruits you like, such as apples, bananas, or berries.\n\n- **Honey and honey:**\n  - 1 tsp pure honey (adjust to taste)\n\n- **A touch of chia seeds:**\n  - 3 tbsp chia seeds\n\n**Simple recipe:** Mix everything together in a mixing bowl. Pour it over the oats and stir until well combined. Let it sit for about 5 minutes, then fold in your mixed fruits.\n\nThis is a quick and healthy breakfast that will keep you satisfied without having to add too much sugar or fat. Enjoy! 😊✨\n\nHave an amazing day! Let's chat about other things we can do together as well."], ["session_id", "20250927_10"], ["timestamp", "2025-09-27 06:41:42.052980"], ["created_at", "2025-09-27 06:41:42.053229"], ["updated_at", "2025-09-27 06:41:42.053229"]]
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/conversation.rb:12:in 'Conversation.log_conversation'
+Conversation logged to database: ID 37, can you tell me something good to eat in the breakf...
+  [1m[36mCharacter Load (0.0ms)[0m  [1m[34mSELECT "characters".* FROM "characters" WHERE "characters"."active" = ? AND "characters"."id" = ? LIMIT ?[0m  [["active", 1], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/chat_controller.rb:37:in 'ChatController#send_message'
+Completed 200 OK in 5432ms (Views: 0.1ms | ActiveRecord: 2.2ms | Allocations: 14009)
+
+

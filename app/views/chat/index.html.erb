@@ -28,21 +28,12 @@
       </div>
     </div>
     
-    <!-- Voice Debug Panel (temporary) -->
-    <div class="voice-debug" id="voiceDebug" style="background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 5px; font-size: 12px; display: none;">
-      <strong>🔊 Voice Debug Info:</strong><br>
-      <div id="debugInfo">Loading...</div>
-    </div>
-
     <!-- Active Character Indicator -->
     <div class="active-character" id="activeCharacter" style="display: none;">
       <span class="emoji" id="activeCharacterEmoji">🤖</span>
       <span id="activeCharacterName">Regular Cally</span>
       <button class="test-voice-btn" id="testVoiceBtn" title="Test this character's voice">
         🔊 Test Voice
-      </button>
-      <button class="debug-voice-btn" id="debugVoiceBtn" title="Show voice debug info">
-        🔍 Debug
       </button>
     </div>
     
@@ -122,12 +113,6 @@ class CallyChat {
     // Load voices when available
     const loadVoicesSync = () => {
       this.availableVoices = this.synthesis.getVoices();
-      console.log('Available voices loaded:', this.availableVoices.length);
-      
-      // Debug: Log all available voices
-      this.availableVoices.forEach((voice, index) => {
-        console.log(`Voice ${index}: ${voice.name} (${voice.lang}) - ${voice.gender || 'unknown gender'}`);
-      });
     };
     
     // Voices might not be loaded immediately
@@ -169,12 +154,6 @@ class CallyChat {
     const testVoiceBtn = document.getElementById('testVoiceBtn');
     if (testVoiceBtn) {
       testVoiceBtn.addEventListener('click', () => this.testCurrentCharacterVoice());
-    }
-    
-    // Debug voice button listener
-    const debugVoiceBtn = document.getElementById('debugVoiceBtn');
-    if (debugVoiceBtn) {
-      debugVoiceBtn.addEventListener('click', () => this.toggleVoiceDebug());
     }
   }
   
@@ -313,16 +292,12 @@ class CallyChat {
     let voiceSettings = {};
     try {
       let voiceSettingsStr = selectedOption.dataset.voiceSettings || '{}';
-      console.log('🔍 Raw voice settings string:', voiceSettingsStr);
       
       // Fix HTML encoding issues
       voiceSettingsStr = voiceSettingsStr.replace(/&quot;/g, '"');
-      console.log('🔍 Decoded voice settings string:', voiceSettingsStr);
       
       voiceSettings = JSON.parse(voiceSettingsStr);
     } catch (error) {
-      console.error('❌ JSON parse error for voice_settings:', error);
-      console.log('🔍 Problematic string:', selectedOption.dataset.voiceSettings);
       voiceSettings = { rate: 1.0, pitch: 1.0, voice: 'default' }; // Fallback
     }
     
@@ -335,8 +310,6 @@ class CallyChat {
     
     // Update voice settings immediately
     this.currentVoiceSettings = this.selectedCharacter.voiceSettings;
-    console.log('🎭 Character selected:', this.selectedCharacter.name);
-    console.log('🔊 Voice settings updated:', this.currentVoiceSettings);
     
     // Enable speaker button
     const speakerBtn = document.getElementById('characterSpeakerBtn');
@@ -394,33 +367,6 @@ class CallyChat {
     }
   }
   
-  toggleVoiceDebug() {
-    const debugPanel = document.getElementById('voiceDebug');
-    if (debugPanel.style.display === 'none') {
-      this.showVoiceDebug();
-      debugPanel.style.display = 'block';
-    } else {
-      debugPanel.style.display = 'none';
-    }
-  }
-  
-  showVoiceDebug() {
-    const voices = this.synthesis.getVoices();
-    const debugInfo = document.getElementById('debugInfo');
-    
-    let debugText = `<strong>Available Voices (${voices.length}):</strong><br>`;
-    voices.forEach((voice, index) => {
-      debugText += `${index}: ${voice.name} (${voice.lang}) - ${voice.gender || 'unknown'}<br>`;
-    });
-    
-    debugText += `<br><strong>Current Character:</strong> ${this.selectedCharacter?.name || 'None'}<br>`;
-    debugText += `<strong>Voice Settings:</strong> ${JSON.stringify(this.currentVoiceSettings)}<br>`;
-    
-    const selectedVoice = this.selectVoiceByType(voices, this.currentVoiceSettings.voice || 'default');
-    debugText += `<strong>Selected Voice:</strong> ${selectedVoice?.name || 'None'}<br>`;
-    
-    debugInfo.innerHTML = debugText;
-  }
 
   speakLastMessage() {
     if (this.lastAiMessage) {
@@ -442,17 +388,12 @@ class CallyChat {
       
       // Get fresh voices (important for voice changes)
       const voices = this.synthesis.getVoices();
-      console.log('🔊 Current character voice settings:', this.currentVoiceSettings);
-      console.log('🔊 Total available voices:', voices.length);
       
       // Enhanced voice selection with multiple fallbacks
       let selectedVoice = this.selectVoiceByType(voices, this.currentVoiceSettings.voice || 'default');
       
       if (selectedVoice) {
         utterance.voice = selectedVoice;
-        console.log('🔊 Selected voice:', selectedVoice.name, 'for', this.currentVoiceSettings.voice);
-      } else {
-        console.log('🔊 Using default system voice');
       }
       
       utterance.onstart = () => {
@@ -470,8 +411,6 @@ class CallyChat {
   }
   
   selectVoiceByType(voices, voiceType) {
-    console.log('🎭 Selecting voice for type:', voiceType);
-    console.log('🎭 Available voices:', voices.map(v => `${v.name} (${v.lang})`));
     
     // Create a more aggressive voice selection strategy
     const voiceSelectors = {
@@ -531,30 +470,23 @@ class CallyChat {
     for (const selector of selectors) {
       const voice = voices.find((v, index) => selector(v, index));
       if (voice) {
-        console.log(`🎯 Found voice: ${voice.name} for ${voiceType}`);
         return voice;
       }
     }
     
     // Ultimate fallback - just pick a different voice based on voice type
     if (voiceType === 'female' && voices.length > 1) {
-      const femaleVoice = voices[1]; // Try second voice
-      console.log(`🔄 Female fallback voice: ${femaleVoice.name}`);
-      return femaleVoice;
+      return voices[1]; // Try second voice
     } else if (voiceType === 'male' && voices.length > 2) {
-      const maleVoice = voices[2]; // Try third voice
-      console.log(`🔄 Male fallback voice: ${maleVoice.name}`);
-      return maleVoice;
+      return voices[2]; // Try third voice
     }
     
     // Final fallback - first English voice
     const fallback = voices.find(v => v.lang.includes('en'));
     if (fallback) {
-      console.log(`🔄 Final fallback voice: ${fallback.name}`);
       return fallback;
     }
     
-    console.log('⚠️ No suitable voice found, using system default');
     return null;
   }
   
