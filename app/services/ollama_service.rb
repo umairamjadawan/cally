@@ -3,7 +3,7 @@ require 'json'
 
 class OllamaService
   OLLAMA_URL = ENV.fetch('OLLAMA_URL', 'http://localhost:11434')
-  MODEL_NAME = 'qwen2.5:0.5b'
+  MODEL_NAME = 'phi3.5:3.8b-mini-instruct-q4_K_M'
   
   # Base system prompt - will be enhanced with family configuration
   def self.build_system_prompt
